@@ -186,15 +186,23 @@
         }
 
         /* ============================================== */
-        /* PROJECTS GRID (NOVO LAYOUT)                    */
+        /* PROJECTS GRID (AJUSTE MESTRE DE LAYOUT)        */
         /* ============================================== */
         .projects-container {
             display: grid;
-            /* Garante o lado a lado quando fechados */
             grid-template-columns: 1fr 1fr; 
             gap: 30px;
-            /* Permite alinhar itens com alturas diferentes no topo */
-            align-items: start; 
+            align-items: start;
+        }
+
+        /* Quando UM projeto é expandido, essa classe é adicionada ao container pai. 
+           Ela desfaz o Grid e esconde quem não estiver expandido, forçando o projeto aberto ao topo absoluto! */
+        .projects-container.is-expanded-mode {
+            display: block; 
+        }
+
+        .projects-container.is-expanded-mode .project-section:not(.expanded) {
+            display: none;
         }
 
         .project-section {
@@ -203,17 +211,14 @@
             border: 1px solid var(--border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.5s ease;
             display: flex;
             flex-direction: column;
-            scroll-margin-top: 100px; /* Margem extra pro scroll não esconder o título no header fixo */
         }
 
-        /* O SEGREDO: Quando expandido, ele ocupa a linha inteira (as 2 colunas). 
-           O outro card (fechado) é empurrado automaticamente pra baixo!
-        */
         .project-section.expanded {
-            grid-column: 1 / -1; 
+            /* Garante expansão total */
+            width: 100%;
         }
 
         .project-header {
@@ -309,8 +314,6 @@
             animation: fadeIn 0.5s ease;
         }
 
-        /* Lógica de estado expandido (Remove o height fixo e tira a foto dark) 
-        */
         .project-section.expanded .project-preview {
             height: auto; 
             border-bottom: none;
@@ -318,7 +321,7 @@
         }
 
         .project-section.expanded .project-preview img {
-            display: none; /* Esconde o preview para os mockups reais do MD aparecerem limpos */
+            display: none; 
         }
 
         .project-section.expanded .fade-overlay {
@@ -541,6 +544,7 @@
             </p>
 
             <div class="contact-links">
+                <!-- LINKEDIN -->
                 <a href="https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/" target="_blank" class="contact-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
@@ -548,6 +552,7 @@
                     LinkedIn
                 </a>
                 
+                <!-- EMAIL -->
                 <a href="mailto:marcoslinces@outlook.com" class="contact-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
@@ -563,8 +568,10 @@
         <p class="section-subtitle lang-pt">Trabalhos em produção e repositórios de código aberto.</p>
         <p class="section-subtitle lang-en">Production work and open-source repositories.</p>
 
-        <div class="projects-container">
+        <!-- CONTAINER DOS PROJETOS -->
+        <div class="projects-container" id="projects-wrapper">
             
+            <!-- PROJECT 1: COMPOSESTORE KIT -->
             <div class="project-section" id="proj-compose">
                 <div class="project-header">
                     <h2>ComposeStore Kit</h2>
@@ -579,6 +586,7 @@
                 </div>
 
                 <div class="project-preview">
+                    <!-- Correção de formato confirmada para PNG -->
                     <img src="assets/ide4.png" alt="Preview App">
                     <div class="fade-overlay"></div>
                 </div>
@@ -590,6 +598,7 @@
                     </button>
                 </div>
 
+                <!-- CONTEÚDO EXPANDIDO -->
                 <div class="project-content">
                     <div class="full-content-header">
                         <h1>ComposeStore Kit</h1>
@@ -655,6 +664,7 @@
                 </div>
             </div>
 
+            <!-- PROJECT 2: DATAMOBILE ENTERPRISE -->
             <div class="project-section" id="proj-data">
                 <div class="project-header">
                     <h2>DataMobile Enterprise</h2>
@@ -669,6 +679,7 @@
                 </div>
 
                 <div class="project-preview">
+                    <!-- Correção de formato confirmada para PNG -->
                     <img src="assets/ide2.png" alt="Preview XML Layout">
                     <div class="fade-overlay"></div>
                 </div>
@@ -680,6 +691,7 @@
                     </button>
                 </div>
 
+                <!-- CONTEÚDO EXPANDIDO -->
                 <div class="project-content">
                     <div class="full-content-header">
                         <h1>DataMobile</h1>
@@ -751,7 +763,12 @@
                 </div>
             </div>
 
-        </div> <div class="coming-soon-section">
+        </div> <!-- Fim do Grid de Projetos -->
+
+        <!-- ============================================== -->
+        <!-- COMING SOON SECTION                            -->
+        <!-- ============================================== -->
+        <div class="coming-soon-section">
             <h3 class="lang-pt">⏳ O que vem a seguir?</h3>
             <h3 class="lang-en">⏳ What's Next?</h3>
             
@@ -767,6 +784,7 @@
 
     </div>
 
+    <!-- Scripts -->
     <script>
         function setLanguage(lang) {
             if (lang === 'en') {
@@ -780,32 +798,37 @@
             event.target.classList.add('active');
         }
 
-        // Lógica Avançada de Expansão e Scroll
         function toggleProject(projectId) {
+            const container = document.getElementById('projects-wrapper');
             const projectCard = document.getElementById(projectId);
             const isExpanded = projectCard.classList.contains('expanded');
             
-            // Fecha todos os projetos abertos antes de abrir o novo (Opcional, mas mantém a tela limpa)
-            document.querySelectorAll('.project-section.expanded').forEach(card => {
-                if(card.id !== projectId) {
+            if(isExpanded) {
+                // Ao fechar, retira as classes e volta a exibir todos no Grid
+                projectCard.classList.remove('expanded');
+                container.classList.remove('is-expanded-mode');
+                updateButtonText(projectId, false);
+                
+                // Pequeno delay para suavidade ao voltar a posição
+                setTimeout(() => {
+                    projectCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            } else {
+                // Se já houver outro projeto aberto, garante que ele feche antes de abrir o novo
+                document.querySelectorAll('.project-section.expanded').forEach(card => {
                     card.classList.remove('expanded');
                     updateButtonText(card.id, false);
-                }
-            });
-            
-            if(isExpanded) {
-                // Fecha
-                projectCard.classList.remove('expanded');
-                updateButtonText(projectId, false);
-            } else {
-                // Abre
+                });
+
+                // Adiciona as classes para esconder os demais e expandir este
                 projectCard.classList.add('expanded');
+                container.classList.add('is-expanded-mode');
                 updateButtonText(projectId, true);
                 
-                // Força a tela a rolar para cravar o título do projeto no topo (descontando o header)
+                // Rola a tela para o topo do projeto logo após o navegador recalcular o layout
                 setTimeout(() => {
                     projectCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 350); // Delay pro CSS Grid ter tempo de animar a abertura antes de calcular a posição
+                }, 150);
             }
         }
 
