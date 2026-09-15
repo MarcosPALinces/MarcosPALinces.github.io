@@ -5,7 +5,7 @@
 ### 🌐 Acesse meu Portfólio Interativo
 Não veja apenas código, veja os aplicativos funcionando! Clique no botão abaixo para acessar minha apresentação completa com demonstrações visuais, arquitetura Offline-First e integração de IA na borda (Edge AI).
 
-[![Acessar Portfólio](https://img.shields.io/badge/🚀_Acessar_Meu_Portfólio_Interativo-073042?style=for-the-badge&logo=googlechrome&logoColor=white)](https://MarcosPALinces.github.io/MarcosPALinces/index.html)
+[![Acessar Portfólio](https://img.shields.io/badge/🚀_Acessar_Meu_Portfólio_Interativo-073042?style=for-the-badge&logo=googlechrome&logoColor=white)](https://marcospalinces.github.io/index.html)
 ---
 ### 🛠️ Minha Stack de Domínio
 * **Linguagens:** Kotlin, Java.
