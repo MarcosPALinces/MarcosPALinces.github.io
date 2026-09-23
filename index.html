@@ -185,9 +185,7 @@
             font-size: 1.1rem;
         }
 
-        /* ============================================== */
-        /* PROJECTS GRID (AJUSTE MESTRE DE LAYOUT)        */
-        /* ============================================== */
+        /* PROJECTS GRID */
         .projects-container {
             display: grid;
             grid-template-columns: 1fr 1fr; 
@@ -195,8 +193,6 @@
             align-items: start;
         }
 
-        /* Quando UM projeto é expandido, essa classe é adicionada ao container pai. 
-           Ela desfaz o Grid e esconde quem não estiver expandido, forçando o projeto aberto ao topo absoluto! */
         .projects-container.is-expanded-mode {
             display: block; 
         }
@@ -217,7 +213,6 @@
         }
 
         .project-section.expanded {
-            /* Garante expansão total */
             width: 100%;
         }
 
@@ -283,7 +278,7 @@
             transition: opacity 0.3s;
         }
 
-        /* BOTÃO DE EXPANSÃO */
+        /* EXPAND BUTTON */
         .expand-btn-container {
             padding: 20px;
             text-align: center;
@@ -307,7 +302,7 @@
             background-color: rgba(61, 220, 132, 0.1);
         }
 
-        /* CONTEÚDO EXPANDIDO */
+        /* EXPANDED CONTENT */
         .project-content {
             display: none; 
             padding: 0 40px 40px 40px;
@@ -342,7 +337,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* MOCKUPS E GIFS INTERNOS */
+        /* MOCKUPS & GRIDS */
         .full-content-header {
             text-align: center;
             margin-bottom: 30px;
@@ -453,7 +448,7 @@
             font-weight: bold;
         }
 
-        /* EM BREVE SECTION */
+        /* COMING SOON SECTION */
         .coming-soon-section {
             background-color: rgba(30, 32, 41, 0.5);
             border: 2px dashed var(--border);
@@ -544,7 +539,6 @@
             </p>
 
             <div class="contact-links">
-                <!-- LINKEDIN -->
                 <a href="https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/" target="_blank" class="contact-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
@@ -552,7 +546,6 @@
                     LinkedIn
                 </a>
                 
-                <!-- EMAIL -->
                 <a href="mailto:marcoslinces@outlook.com" class="contact-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
@@ -563,10 +556,10 @@
             </div>
         </div>
 
-        <h2 class="section-title lang-pt">💼 Projetos e Experiência Atual</h2>
-        <h2 class="section-title lang-en">💼 Current Experience & Projects</h2>
-        <p class="section-subtitle lang-pt">Trabalhos em produção e repositórios de código aberto.</p>
-        <p class="section-subtitle lang-en">Production work and open-source repositories.</p>
+        <h2 class="section-title lang-pt">💼 Projetos e Case de Arquitetura</h2>
+        <h2 class="section-title lang-en">💼 Projects & Architecture Case Study</h2>
+        <p class="section-subtitle lang-pt">Trabalhos em produção e repositórios de código aberto focados em engenharia de software.</p>
+        <p class="section-subtitle lang-en">Production work and open-source repositories focused on software engineering.</p>
 
         <!-- CONTAINER DOS PROJETOS -->
         <div class="projects-container" id="projects-wrapper">
@@ -574,9 +567,9 @@
             <!-- PROJECT 1: COMPOSESTORE KIT -->
             <div class="project-section" id="proj-compose">
                 <div class="project-header">
-                    <h2>ComposeStore Kit</h2>
-                    <p class="lang-pt">App de E-Commerce Completo • Jetpack Compose + M3</p>
-                    <p class="lang-en">Complete E-Commerce App • Jetpack Compose + M3</p>
+                    <h2>ComposeStore</h2>
+                    <p class="lang-pt">App de E-Commerce Completo • Jetpack Compose + Clean Architecture</p>
+                    <p class="lang-en">Full E-Commerce App • Jetpack Compose + Clean Architecture</p>
                     
                     <div class="repo-badges">
                         <img src="https://img.shields.io/badge/Kotlin-2.0%2B-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
@@ -586,29 +579,29 @@
                 </div>
 
                 <div class="project-preview">
-                    <!-- Correção de formato confirmada para PNG -->
                     <img src="assets/ide4.png" alt="Preview App">
                     <div class="fade-overlay"></div>
                 </div>
                 
                 <div class="expand-btn-container">
                     <button class="expand-btn" onclick="toggleProject('proj-compose')">
-                        <span class="lang-pt" id="btn-text-proj-compose-pt">Ver Projeto Completo ▼</span>
-                        <span class="lang-en" id="btn-text-proj-compose-en">View Full Project ▼</span>
+                        <span class="lang-pt" id="btn-text-proj-compose-pt">Ver Arquitetura do Projeto ▼</span>
+                        <span class="lang-en" id="btn-text-proj-compose-en">View Project Architecture ▼</span>
                     </button>
                 </div>
 
                 <!-- CONTEÚDO EXPANDIDO -->
                 <div class="project-content">
                     <div class="full-content-header">
-                        <h1>ComposeStore Kit</h1>
-                        <p><b>Complete E-Commerce Android App • Jetpack Compose + Material 3 + Multi-Language</b></p>
+                        <h1>ComposeStore</h1>
+                        <p><b>E-Commerce Android App • Modular, Scalable & Offline-First Ready</b></p>
                         <br>
+                        <!-- TEXTO ATUALIZADO PARA RECRUTADORES -->
                         <p class="lang-pt" style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                            <i>Economize mais de 120 horas de desenvolvimento. Um UI Kit premium de E-Commerce pronto para produção, construído 100% com Jetpack Compose, Material Design 3, suporte a tema Claro/Escuro e internacionalização nativa completa (Inglês e Português).</i>
+                            <i>Projeto autoral desenvolvido do zero para demonstrar domínio em excelência técnica e padrões modernos do Android. Construído 100% com Jetpack Compose e Material Design 3, o aplicativo implementa Arquitetura Limpa (Clean Architecture) e Fluxo Unidirecional de Dados (UDF). Atualmente, a base de código está sendo escalada para o modelo Headless, recebendo persistência local com Room e consumo de uma API proprietária em Spring Boot.</i>
                         </p>
                         <p class="lang-en" style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                            <i>Save 120+ hours of development. A premium, production-ready E-Commerce UI Kit built with 100% Jetpack Compose, Material Design 3, Light/Dark theme support, and full native internationalization (English & Portuguese).</i>
+                            <i>A comprehensive, from-scratch E-Commerce application built to showcase technical excellence and modern Android standards. Developed 100% with Jetpack Compose and Material Design 3, the app implements Clean Architecture and Unidirectional Data Flow (UDF). Currently, the codebase is scaling to a Headless model, receiving local persistence via Room and consuming a custom Spring Boot API.</i>
                         </p>
                     </div>
 
@@ -625,42 +618,42 @@
 
                     <hr class="divider">
 
-                    <h2 class="lang-pt" style="margin-bottom: 20px; color: #fff;">🚀 Principais Funcionalidades</h2>
-                    <h2 class="lang-en" style="margin-bottom: 20px; color: #fff;">🚀 Key Features</h2>
+                    <h2 class="lang-pt" style="margin-bottom: 20px; color: #fff;">🚀 Decisões Técnicas e Funcionalidades</h2>
+                    <h2 class="lang-en" style="margin-bottom: 20px; color: #fff;">🚀 Technical Decisions & Features</h2>
 
                     <div class="feature-grid">
                         <div class="feature-card">
                             <h3 class="lang-pt">💎 100% Jetpack Compose & M3</h3>
                             <h3 class="lang-en">💎 100% Jetpack Compose & M3</h3>
-                            <p class="lang-pt">Zero layouts XML. Construído com tokens modernos do Material Design 3, suporte a cores dinâmicas e componentes adaptativos (<code>AppScaffold</code>, <code>LazyVerticalGrid</code>, <code>HorizontalPager</code>).</p>
-                            <p class="lang-en">Zero XML layouts. Built with modern Material Design 3 tokens, dynamic color support, and adaptive components (<code>AppScaffold</code>, <code>LazyVerticalGrid</code>, <code>HorizontalPager</code>).</p>
+                            <p class="lang-pt">Zero layouts XML. Construído com tokens modernos do Material Design 3, suporte dinâmico a temas e componentes adaptativos otimizados para performance de renderização.</p>
+                            <p class="lang-en">Zero XML layouts. Built with modern Material Design 3 tokens, dynamic theme support, and adaptive components optimized for rendering performance.</p>
                         </div>
                         <div class="feature-card">
-                            <h3 class="lang-pt">🛍️ Fluxo Completo de E-Commerce</h3>
-                            <h3 class="lang-en">🛍️ Complete E-Commerce Flow</h3>
-                            <p class="lang-pt">Mais de 18 telas prontas para uso: Splash, Autenticação, Home, Filtros, Detalhes do Produto, Carrinho, Checkout, Rastreamento de Pedido e Devoluções.</p>
-                            <p class="lang-en">18+ ready-to-use screens: Splash, Authentication, Home, Category Filters, Product Details, Shopping Cart, Checkout, Order Tracking, Exchanges & Returns, and Profile.</p>
+                            <h3 class="lang-pt">🏗️ Clean Architecture & UDF</h3>
+                            <h3 class="lang-en">🏗️ Clean Architecture & UDF</h3>
+                            <p class="lang-pt">Separação rigorosa de responsabilidades. Repositórios plug-and-play e gerenciamento de estado reativo, facilitando a transição de dados mockados para persistência local (Room) e consumo de API (Retrofit).</p>
+                            <p class="lang-en">Strict separation of concerns. Plug-and-play repositories and reactive state management, allowing seamless transition from mocked data to local persistence (Room) and API consumption (Retrofit).</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="lang-pt">🛡️ Type-Safe Navigation</h3>
+                            <h3 class="lang-en">🛡️ Type-Safe Navigation</h3>
+                            <p class="lang-pt">Navegação segura e robusta utilizando o novo <code>Navigation Compose</code> em conjunto com <code>kotlinx.serialization</code>, eliminando strings hardcoded e garantindo passagem de argumentos tipados.</p>
+                            <p class="lang-en">Secure and robust routing using the new <code>Navigation Compose</code> paired with <code>kotlinx.serialization</code>, eliminating hardcoded strings and ensuring typed argument passing.</p>
                         </div>
                         <div class="feature-card">
                             <h3 class="lang-pt">🌍 Multi-Idioma Nativo (i18n)</h3>
                             <h3 class="lang-en">🌍 Native Multi-Language (i18n)</h3>
-                            <p class="lang-pt">Localização nativa para <b>Inglês</b> e <b>Português (Brasil)</b> com fallback automático e formatação de moedas/datas utilizando <code>Locale.getDefault()</code>.</p>
-                            <p class="lang-en">Native localization for <b>English</b> and <b>Portuguese (Brazil)</b> with automated device fallback and currency/date formatting through <code>Locale.getDefault()</code>.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3 class="lang-pt">🔒 Navegação Type-Safe</h3>
-                            <h3 class="lang-en">🔒 Type-Safe Navigation</h3>
-                            <p class="lang-pt">Navegação moderna utilizando <code>Navigation Compose</code> em conjunto com <code>kotlinx.serialization</code>. Sem rotas com strings hardcoded ou bundles sem tipagem.</p>
-                            <p class="lang-en">Modern navigation using <code>Navigation Compose</code> paired with <code>kotlinx.serialization</code>. No hardcoded string routes or untyped bundles.</p>
+                            <p class="lang-pt">Localização nativa para <b>Inglês</b> e <b>Português (Brasil)</b> com fallback automático do dispositivo, além de formatação dinâmica de moedas utilizando <code>Locale.getDefault()</code>.</p>
+                            <p class="lang-en">Native localization for <b>English</b> and <b>Portuguese (Brazil)</b> with automated device fallback, plus dynamic currency formatting via <code>Locale.getDefault()</code>.</p>
                         </div>
                     </div>
 
                     <hr class="divider">
 
-                    <h2 class="lang-pt" style="color: #fff;">🏛️ Arquitetura & Qualidade de Código</h2>
-                    <h2 class="lang-en" style="color: #fff;">🏛️ Architecture & Code Quality</h2>
-                    <p class="lang-pt" style="margin-top: 15px; font-size: 1.1rem;">O projeto adere estritamente à <b>Clean Architecture</b> e ao <b>Unidirectional Data Flow (UDF)</b>, garantindo um código de fácil manutenção e testes.</p>
-                    <p class="lang-en" style="margin-top: 15px; font-size: 1.1rem;">The project strictly adheres to <b>Clean Architecture</b> and <b>Unidirectional Data Flow (UDF)</b>, ensuring highly maintainable and testable code.</p>
+                    <h2 class="lang-pt" style="color: #fff;">🏛️ Qualidade de Código & Testabilidade</h2>
+                    <h2 class="lang-en" style="color: #fff;">🏛️ Code Quality & Testability</h2>
+                    <p class="lang-pt" style="margin-top: 15px; font-size: 1.1rem;">A injeção de dependências permite que a interface visual inteira seja renderizada através de repositórios fakes sem a necessidade de um back-end ativo. O projeto foi desenhado sob a premissa de <b>alta testabilidade</b> e fácil escalabilidade horizontal para novos recursos.</p>
+                    <p class="lang-en" style="margin-top: 15px; font-size: 1.1rem;">Dependency injection allows the entire UI to be rendered via fake repositories without needing an active backend. The project was designed under the premise of <b>high testability</b> and easy horizontal scalability for new features.</p>
                 </div>
             </div>
 
@@ -679,7 +672,6 @@
                 </div>
 
                 <div class="project-preview">
-                    <!-- Correção de formato confirmada para PNG -->
                     <img src="assets/ide2.png" alt="Preview XML Layout">
                     <div class="fade-overlay"></div>
                 </div>
@@ -716,7 +708,7 @@
 
                     <div class="gif-grid">
                         <div class="gif-item">
-                            <img src="assets/login.gif" alt="Login">
+                            <img src="assets/Login.gif" alt="Login">
                             <span class="lang-pt">Acesso e Segurança</span>
                             <span class="lang-en">Access & Security</span>
                         </div>
@@ -769,17 +761,17 @@
         <!-- COMING SOON SECTION                            -->
         <!-- ============================================== -->
         <div class="coming-soon-section">
-            <h3 class="lang-pt">⏳ O que vem a seguir?</h3>
-            <h3 class="lang-en">⏳ What's Next?</h3>
+            <h3 class="lang-pt">⏳ Escalando a Arquitetura (Em Desenvolvimento)</h3>
+            <h3 class="lang-en">⏳ Scaling the Architecture (In Development)</h3>
             
             <p class="lang-pt">
-                Estou iniciando o desenvolvimento do <b>Back-end oficial</b> para o E-Commerce. Uma API robusta construída do zero, aplicando arquitetura limpa, segurança de endpoints e persistência relacional.
+                O <b>ComposeStore</b> está sendo expandido para uma plataforma Headless corporativa. A camada Android receberá integração direta com persistência local <b>Room Database</b> e consumo via <b>Retrofit</b>. O Back-end oficial já está em desenvolvimento, garantindo uma API escalável do zero, com segurança de endpoints e banco de dados relacional.
             </p>
             <p class="lang-en">
-                I am starting the development of the <b>official Backend</b> for the E-Commerce. A robust API built from scratch, applying clean architecture, endpoint security, and relational persistence.
+                <b>ComposeStore</b> is being expanded into an enterprise Headless platform. The Android layer will receive direct integration with <b>Room Database</b> for local persistence and network consumption via <b>Retrofit</b>. The official Backend is actively under development, providing a scalable API from scratch, complete with endpoint security and a relational database.
             </p>
             
-            <div class="spring-badge">Spring Boot 3 + PostgreSQL</div>
+            <div class="spring-badge">Spring Boot 3 + PostgreSQL + Room</div>
         </div>
 
     </div>
@@ -804,28 +796,23 @@
             const isExpanded = projectCard.classList.contains('expanded');
             
             if(isExpanded) {
-                // Ao fechar, retira as classes e volta a exibir todos no Grid
                 projectCard.classList.remove('expanded');
                 container.classList.remove('is-expanded-mode');
                 updateButtonText(projectId, false);
                 
-                // Pequeno delay para suavidade ao voltar a posição
                 setTimeout(() => {
                     projectCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 100);
             } else {
-                // Se já houver outro projeto aberto, garante que ele feche antes de abrir o novo
                 document.querySelectorAll('.project-section.expanded').forEach(card => {
                     card.classList.remove('expanded');
                     updateButtonText(card.id, false);
                 });
 
-                // Adiciona as classes para esconder os demais e expandir este
                 projectCard.classList.add('expanded');
                 container.classList.add('is-expanded-mode');
                 updateButtonText(projectId, true);
                 
-                // Rola a tela para o topo do projeto logo após o navegador recalcular o layout
                 setTimeout(() => {
                     projectCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 150);
@@ -840,8 +827,8 @@
                 textPt.innerText = "Fechar Projeto ▲";
                 textEn.innerText = "Close Project ▲";
             } else {
-                textPt.innerText = "Ver Projeto Completo ▼";
-                textEn.innerText = "View Full Project ▼";
+                textPt.innerText = "Ver Arquitetura do Projeto ▼";
+                textEn.innerText = "View Project Architecture ▼";
             }
         }
     </script>
