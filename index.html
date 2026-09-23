@@ -13,7 +13,7 @@
             --surface: #1E2029;
             --surface-light: #2A2D39;
             --text: #E6EAF2;
-            --text-muted: #8B949E;
+            --text-muted: #9BA4B5; /* Levemente mais claro para leitura fluida */
             --border: #30363D;
         }
 
@@ -27,7 +27,8 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7; /* Melhor leitura */
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Top Bar & Language Toggle */
@@ -35,8 +36,8 @@
             display: flex;
             justify-content: flex-end;
             padding: 15px 40px;
-            background-color: rgba(30, 32, 41, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(15, 17, 21, 0.85); /* Fundo acompanhando o tema */
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -47,11 +48,11 @@
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text-muted);
-            padding: 6px 16px;
+            padding: 8px 18px; /* Botões levemente maiores */
             margin-left: 10px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 0.85rem;
             transition: all 0.3s ease;
         }
@@ -74,46 +75,48 @@
 
         /* Container Layout */
         .container {
-            max-width: 1200px;
+            max-width: 1100px; /* Reduzido para centralizar melhor a leitura */
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px; /* Respiro extra no topo */
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 80px; /* Mais distância até a aba "Sobre" */
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.1;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 30px;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .badge {
             background-color: var(--surface);
             color: var(--text);
             border: 1px solid var(--border);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -130,35 +133,41 @@
             background-color: var(--surface);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 60px;
+            padding: 50px 40px; /* Mais padding interno */
+            margin-bottom: 80px; /* Mais margem inferior */
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff;
         }
 
         .about-section p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             line-height: 1.8;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px; /* Mais espaçamento entre botões */
             flex-wrap: wrap;
         }
 
         .contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background-color: var(--surface-light);
             color: var(--text);
             text-decoration: none;
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: 30px;
             border: 1px solid var(--border);
             font-weight: 600;
@@ -171,25 +180,27 @@
             border-color: var(--primary);
         }
 
+        /* TITULOS DE SEÇÃO */
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem; /* Levemente maior */
+            margin-bottom: 15px;
             color: #fff;
+            letter-spacing: -1px;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+            margin-bottom: 50px; /* Mais respiro antes do grid */
+            font-size: 1.15rem;
         }
 
         /* PROJECTS GRID */
         .projects-container {
             display: grid;
             grid-template-columns: 1fr 1fr; 
-            gap: 30px;
+            gap: 40px; /* Gap aumentado para 40px */
             align-items: start;
         }
 
@@ -205,7 +216,7 @@
             background-color: var(--surface);
             border-radius: 24px;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             overflow: hidden;
             transition: all 0.5s ease;
             display: flex;
@@ -217,40 +228,43 @@
         }
 
         .project-header {
-            padding: 40px 30px 20px 30px;
+            padding: 40px 30px 25px 30px;
             text-align: center;
             z-index: 2;
         }
 
         .project-header h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
         .project-header p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         .repo-badges {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
 
         .repo-badges img {
-            height: 24px;
-            border-radius: 4px;
+            height: 26px;
+            border-radius: 6px;
         }
 
         /* PREVIEW FADE */
         .project-preview {
             position: relative;
-            height: 220px;
+            height: 250px; /* Preview levemente mais alto */
             overflow: hidden;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
@@ -263,7 +277,7 @@
             height: 100%;
             object-fit: cover;
             object-position: top;
-            filter: brightness(0.6);
+            filter: brightness(0.7); /* Clareado levemente */
             transition: filter 0.5s ease;
         }
 
@@ -272,7 +286,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100px;
+            height: 120px;
             background: linear-gradient(to bottom, rgba(30, 32, 41, 0), var(--surface));
             pointer-events: none;
             transition: opacity 0.3s;
@@ -280,7 +294,7 @@
 
         /* EXPAND BUTTON */
         .expand-btn-container {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             background-color: var(--surface);
         }
@@ -289,13 +303,14 @@
             background: transparent;
             color: var(--primary);
             border: 1px solid var(--primary);
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: bold;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
-            max-width: 250px;
+            max-width: 280px;
         }
 
         .expand-btn:hover {
@@ -305,7 +320,7 @@
         /* EXPANDED CONTENT */
         .project-content {
             display: none; 
-            padding: 0 40px 40px 40px;
+            padding: 20px 50px 50px 50px; /* Mais margem interna nas laterais */
             animation: fadeIn 0.5s ease;
         }
 
@@ -340,16 +355,21 @@
         /* MOCKUPS & GRIDS */
         .full-content-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
-        .full-content-header h1 { color: #fff; margin-bottom: 5px; }
+        .full-content-header h1 { 
+            font-size: 2.8rem;
+            color: #fff; 
+            margin-bottom: 10px; 
+            letter-spacing: -1px;
+        }
 
         .mockup-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 40px 0;
+            gap: 40px;
+            margin: 50px 0;
         }
 
         .mockup-grid div {
@@ -358,19 +378,19 @@
 
         .mockup-grid img {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .gif-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            gap: 30px;
+            margin: 50px 0;
             background-color: var(--surface-light);
-            padding: 30px;
-            border-radius: 16px;
+            padding: 40px;
+            border-radius: 20px;
             border: 1px solid var(--border);
         }
 
@@ -383,12 +403,14 @@
             max-width: 220px;
             border-radius: 12px;
             border: 1px solid var(--border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .gif-item span {
             display: block;
             margin-top: 15px;
             font-weight: 600;
+            font-size: 1.05rem;
             color: var(--text);
         }
 
@@ -396,26 +418,31 @@
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-            margin-bottom: 40px;
+            gap: 24px;
+            margin-top: 30px;
+            margin-bottom: 50px;
         }
 
         .feature-card {
             background-color: var(--surface-light);
             border: 1px solid var(--border);
-            padding: 24px;
-            border-radius: 16px;
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
 
         .feature-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-muted);
         }
 
@@ -423,21 +450,26 @@
             border: 0;
             height: 1px;
             background: var(--border);
-            margin: 40px 0;
+            margin: 50px 0;
         }
 
         /* Lists */
         ul.tech-list {
             list-style: none;
             margin-top: 20px;
+            margin-bottom: 30px;
         }
 
         ul.tech-list li {
             margin-bottom: 15px;
-            padding-left: 20px;
+            padding-left: 25px;
             position: relative;
-            color: var(--text);
-            font-size: 1rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        ul.tech-list li b {
+            color: #fff;
         }
 
         ul.tech-list li::before {
@@ -446,51 +478,53 @@
             left: 0;
             color: var(--primary);
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
         /* COMING SOON SECTION */
         .coming-soon-section {
-            background-color: rgba(30, 32, 41, 0.5);
+            background-color: rgba(30, 32, 41, 0.4);
             border: 2px dashed var(--border);
             border-radius: 24px;
-            padding: 40px;
-            margin-top: 60px;
+            padding: 60px 40px;
+            margin-top: 80px;
             text-align: center;
         }
 
         .coming-soon-section h3 {
             color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
         .coming-soon-section p {
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-size: 1.15rem;
         }
 
         .spring-badge {
             display: inline-block;
             background-color: #6db33f;
             color: #fff;
-            padding: 8px 16px;
+            padding: 10px 24px;
             border-radius: 12px;
             font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 20px;
+            font-size: 1rem;
+            margin-top: 10px;
         }
 
         @media (max-width: 992px) {
-            .projects-container, .feature-grid {
+            .projects-container, .feature-grid, .mockup-grid {
                 grid-template-columns: 1fr; 
             }
             .gif-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .mockup-grid {
-                grid-template-columns: 1fr;
+            .project-content {
+                padding: 20px;
             }
         }
     </style>
@@ -594,9 +628,9 @@
                 <div class="project-content">
                     <div class="full-content-header">
                         <h1>ComposeStore</h1>
-                        <p><b>E-Commerce Android App • Modular, Scalable & Offline-First Ready</b></p>
+                        <p style="font-size: 1.1rem;"><b>E-Commerce Android App • Modular, Scalable & Offline-First Ready</b></p>
                         <br>
-                        <!-- TEXTO ATUALIZADO PARA RECRUTADORES -->
+                        
                         <p class="lang-pt" style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
                             <i>Projeto autoral desenvolvido do zero para demonstrar domínio em excelência técnica e padrões modernos do Android. Construído 100% com Jetpack Compose e Material Design 3, o aplicativo implementa Arquitetura Limpa (Clean Architecture) e Fluxo Unidirecional de Dados (UDF). Atualmente, a base de código está sendo escalada para o modelo Headless, recebendo persistência local com Room e consumo de uma API proprietária em Spring Boot.</i>
                         </p>
@@ -608,18 +642,18 @@
                     <div class="mockup-grid">
                         <div>
                             <img src="https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(1).jpg" alt="Home Screen (Dark M3)">
-                            <p style="margin-top: 10px; color: var(--text-muted);"><b>Home Screen & Dynamic Catalog (Dark M3)</b></p>
+                            <p style="margin-top: 15px; color: var(--text-muted); font-size: 1.05rem;"><b>Home Screen & Dynamic Catalog (Dark M3)</b></p>
                         </div>
                         <div>
                             <img src="https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(2).jpg" alt="Campaigns Listing">
-                            <p style="margin-top: 10px; color: var(--text-muted);"><b>Campaigns, Banners & Product Listing</b></p>
+                            <p style="margin-top: 15px; color: var(--text-muted); font-size: 1.05rem;"><b>Campaigns, Banners & Product Listing</b></p>
                         </div>
                     </div>
 
                     <hr class="divider">
 
-                    <h2 class="lang-pt" style="margin-bottom: 20px; color: #fff;">🚀 Decisões Técnicas e Funcionalidades</h2>
-                    <h2 class="lang-en" style="margin-bottom: 20px; color: #fff;">🚀 Technical Decisions & Features</h2>
+                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">🚀 Decisões Técnicas e Funcionalidades</h2>
+                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">🚀 Technical Decisions & Features</h2>
 
                     <div class="feature-grid">
                         <div class="feature-card">
@@ -654,6 +688,44 @@
                     <h2 class="lang-en" style="color: #fff;">🏛️ Code Quality & Testability</h2>
                     <p class="lang-pt" style="margin-top: 15px; font-size: 1.1rem;">A injeção de dependências permite que a interface visual inteira seja renderizada através de repositórios fakes sem a necessidade de um back-end ativo. O projeto foi desenhado sob a premissa de <b>alta testabilidade</b> e fácil escalabilidade horizontal para novos recursos.</p>
                     <p class="lang-en" style="margin-top: 15px; font-size: 1.1rem;">Dependency injection allows the entire UI to be rendered via fake repositories without needing an active backend. The project was designed under the premise of <b>high testability</b> and easy horizontal scalability for new features.</p>
+                
+                    <hr class="divider">
+
+                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">⚙️ API Design & Testes Automatizados</h2>
+                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">⚙️ API Design & Automated Testing</h2>
+
+                    <div style="background-color: var(--surface-light); padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
+                        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                            
+                            <!-- Texto explicativo -->
+                            <div style="flex: 1; min-width: 300px;">
+                                <p class="lang-pt" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+                                    Para garantir a integridade dos dados entre o App Android e o futuro painel CMS, a API RESTful proprietária foi desenhada com foco em confiabilidade.
+                                </p>
+                                <p class="lang-en" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+                                    To ensure data integrity between the Android App and the upcoming CMS dashboard, the proprietary RESTful API was designed with reliability in mind.
+                                </p>
+
+                                <ul class="tech-list lang-pt">
+                                    <li><b>Testes de Contrato (Postman):</b> Scripts de validação em JavaScript para garantir status codes corretos (ex: 201 Created) e tipagem do JSON.</li>
+                                    <li><b>Arquitetura Headless:</b> Back-end isolado servindo como fonte única da verdade para plataformas mobile e web simultaneamente.</li>
+                                </ul>
+                                <ul class="tech-list lang-en">
+                                    <li><b>Contract Testing (Postman):</b> JavaScript validation scripts to ensure correct status codes (e.g., 201 Created) and JSON typing.</li>
+                                    <li><b>Headless Architecture:</b> Isolated backend serving as the single source of truth for both mobile and web platforms simultaneously.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Imagem do Postman -->
+                            <div style="flex: 1; min-width: 300px; text-align: center;">
+                                <img src="assets/portfolio_postman.png" alt="Postman API Testing" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
+                                <p class="lang-pt" style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);"><em>Validação automatizada de payload de criação de produto.</em></p>
+                                <p class="lang-en" style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);"><em>Automated validation of product creation payload.</em></p>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -687,28 +759,28 @@
                 <div class="project-content">
                     <div class="full-content-header">
                         <h1>DataMobile</h1>
-                        <p>Sistema de Gestão de Ordens de Serviço e Análise de Outsourcing.</p>
+                        <p style="font-size: 1.1rem;">Sistema de Gestão de Ordens de Serviço e Análise de Outsourcing.</p>
                         <br>
-                        <p class="lang-pt" style="color: var(--primary); max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 15px; text-align: left;">
+                        <p class="lang-pt" style="color: var(--primary); font-size: 1.05rem; max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 20px; text-align: left;">
                             <b>Modernização de Software Legado:</b> Reestruturação de aplicativo Android nativo com foco em Material Design 3 e otimização de performance.
                         </p>
-                        <p class="lang-en" style="color: var(--primary); max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 15px; text-align: left;">
+                        <p class="lang-en" style="color: var(--primary); font-size: 1.05rem; max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 20px; text-align: left;">
                             <b>Legacy Software Modernization:</b> Restructuring of a native Android application focusing on Material Design 3 and performance optimization.
                         </p>
                     </div>
 
-                    <h2 class="lang-pt" style="margin-top: 40px; margin-bottom: 15px; color: #fff;">📱 Sobre o Projeto</h2>
-                    <h2 class="lang-en" style="margin-top: 40px; margin-bottom: 15px; color: #fff;">📱 About the Project</h2>
-                    <p class="lang-pt" style="font-size: 1.1rem; color: var(--text);">
+                    <h2 class="lang-pt" style="margin-top: 50px; margin-bottom: 20px; color: #fff;">📱 Sobre o Projeto</h2>
+                    <h2 class="lang-en" style="margin-top: 50px; margin-bottom: 20px; color: #fff;">📱 About the Project</h2>
+                    <p class="lang-pt" style="font-size: 1.1rem; color: var(--text-muted);">
                         O <b>DataMobile</b> é uma aplicação corporativa robusta voltada para técnicos de campo. O sistema permite a gestão detalhada de manutenções e ordens de serviço através de uma arquitetura <b>Offline-First</b>, garantindo que o fluxo de trabalho não seja interrompido por falta de conectividade.
                     </p>
-                    <p class="lang-en" style="font-size: 1.1rem; color: var(--text);">
+                    <p class="lang-en" style="font-size: 1.1rem; color: var(--text-muted);">
                         <b>DataMobile</b> is a robust enterprise application aimed at field technicians. The system allows detailed management of maintenance and service orders through an <b>Offline-First</b> architecture, ensuring that the workflow is not interrupted by a lack of connectivity.
                     </p>
 
                     <div class="gif-grid">
                         <div class="gif-item">
-                            <img src="assets/login.gif" alt="Login">
+                            <img src="assets/Login.gif" alt="Login">
                             <span class="lang-pt">Acesso e Segurança</span>
                             <span class="lang-en">Access & Security</span>
                         </div>
@@ -723,13 +795,13 @@
                             <span class="lang-en">Check-in Flow</span>
                         </div>
                     </div>
-                    <p class="lang-pt" style="text-align: center; color: var(--text-muted);"><em>Visualização da interface modernizada: Login, Detalhes de OS e Sincronização de Check-in em tempo real.</em></p>
-                    <p class="lang-en" style="text-align: center; color: var(--text-muted);"><em>Visualizing the modernized interface: Login, OS Details, and Real-time Check-in Synchronization.</em></p>
+                    <p class="lang-pt" style="text-align: center; color: var(--text-muted); font-size: 1.05rem;"><em>Visualização da interface modernizada: Login, Detalhes de OS e Sincronização de Check-in em tempo real.</em></p>
+                    <p class="lang-en" style="text-align: center; color: var(--text-muted); font-size: 1.05rem;"><em>Visualizing the modernized interface: Login, OS Details, and Real-time Check-in Synchronization.</em></p>
 
                     <hr class="divider">
 
-                    <h2 class="lang-pt" style="margin-bottom: 20px; color: #fff;">🛠 Tecnologias e Práticas Utilizadas</h2>
-                    <h2 class="lang-en" style="margin-bottom: 20px; color: #fff;">🛠 Technologies and Practices</h2>
+                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">🛠 Tecnologias e Práticas Utilizadas</h2>
+                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">🛠 Technologies and Practices</h2>
 
                     <ul class="tech-list lang-pt">
                         <li><b>Android Nativo (Java):</b> Interface moderna com Material Design 3 e AndroidX.</li>
@@ -746,11 +818,11 @@
                         <li><b>Architecture:</b> Application of patterns like DAO (Data Access Object) and Singleton with SQLite database.</li>
                     </ul>
 
-                    <div style="background-color: var(--surface-light); padding: 20px; border-radius: 12px; margin-top: 30px; border-left: 4px solid var(--primary);">
-                        <h3 class="lang-pt" style="color: #fff; margin-bottom: 8px;">🧩 Reconhecimento Facial (Extra)</h3>
-                        <h3 class="lang-en" style="color: #fff; margin-bottom: 8px;">🧩 Facial Recognition (Extra)</h3>
-                        <p class="lang-pt">Implementação de validação biométrica com o modelo <code>model.onnx</code> rodando localmente (Edge AI), garantindo a autenticidade do técnico na abertura de ordens.</p>
-                        <p class="lang-en">Implementation of biometric validation using the <code>model.onnx</code> model running locally (Edge AI), ensuring technician authenticity when opening orders.</p>
+                    <div style="background-color: var(--surface-light); padding: 30px; border-radius: 20px; margin-top: 40px; border-left: 4px solid var(--primary);">
+                        <h3 class="lang-pt" style="color: #fff; margin-bottom: 12px;">🧩 Reconhecimento Facial (Extra)</h3>
+                        <h3 class="lang-en" style="color: #fff; margin-bottom: 12px;">🧩 Facial Recognition (Extra)</h3>
+                        <p class="lang-pt" style="font-size: 1.05rem;">Implementação de validação biométrica com o modelo <code>model.onnx</code> rodando localmente (Edge AI), garantindo a autenticidade do técnico na abertura de ordens.</p>
+                        <p class="lang-en" style="font-size: 1.05rem;">Implementation of biometric validation using the <code>model.onnx</code> model running locally (Edge AI), ensuring technician authenticity when opening orders.</p>
                     </div>
                 </div>
             </div>
@@ -827,8 +899,13 @@
                 textPt.innerText = "Fechar Projeto ▲";
                 textEn.innerText = "Close Project ▲";
             } else {
-                textPt.innerText = "Ver Arquitetura do Projeto ▼";
-                textEn.innerText = "View Project Architecture ▼";
+                if (projectId === 'proj-compose') {
+                    textPt.innerText = "Ver Arquitetura do Projeto ▼";
+                    textEn.innerText = "View Project Architecture ▼";
+                } else {
+                    textPt.innerText = "Ver Projeto Completo ▼";
+                    textEn.innerText = "View Full Project ▼";
+                }
             }
         }
     </script>
