@@ -3,911 +3,2254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Android Developer Portfolio | Marcos Linces</title>
+    <title>Marcos Linces | Senior Android & Fullstack Systems Engineer</title>
+    <meta name="description" content="Portfolio de Marcos Linces - Engenharia Mobile Android (Kotlin, Jetpack Compose, M3, Offline-First), Backend Spring Boot 3, AWS Cloud Storage, CMS Web com React & TypeScript e Engenharia Agêntica no Google Antigravity.">
+    <link rel="icon" type="image/png" href="assets/lincesdev-icon.png">
+
+    <!-- Devicon Official Programming Icons -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
     <style>
         :root {
-            --primary: #3DDC84; /* Android Green */
-            --primary-dark: #073042; /* Android Navy */
-            --secondary: #7F52FF; /* Kotlin Purple */
-            --bg: #0F1115;
-            --surface: #1E2029;
-            --surface-light: #2A2D39;
-            --text: #E6EAF2;
-            --text-muted: #9BA4B5; /* Levemente mais claro para leitura fluida */
-            --border: #30363D;
+            --primary: #10B981; /* Linces Dev Emerald */
+            --primary-light: #34D399;
+            --primary-dark: #059669;
+            --primary-glow: rgba(16, 185, 129, 0.25);
+            --android-green: #3DDC84;
+            --kotlin-purple: #7F52FF;
+            --aws-amber: #FF9900;
+            --sky-blue: #0EA5E9;
+            --bg: #0B0D11; /* Linces Deep Tech Dark */
+            --bg-elevated: #11141B;
+            --surface: #171B24;
+            --surface-hover: #1E2430;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(16, 185, 129, 0.38);
+            --text: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-dim: #64748B;
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.06), transparent 35%),
+                radial-gradient(circle at 85% 25%, rgba(127, 82, 255, 0.06), transparent 35%);
             color: var(--text);
-            line-height: 1.7; /* Melhor leitura */
+            line-height: 1.75;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* Top Bar & Language Toggle */
-        .header-top {
+        /* ============================================== */
+        /* TOP NAVBAR & BRAND HEADER                      */
+        /* ============================================== */
+        .top-navbar {
             display: flex;
-            justify-content: flex-end;
-            padding: 15px 40px;
-            background-color: rgba(15, 17, 21, 0.85); /* Fundo acompanhando o tema */
-            backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 48px;
+            background-color: rgba(11, 13, 17, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+        }
+
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px var(--primary-glow));
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .brand-logo-container:hover .brand-logo-img {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .brand-text-block {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .brand-title {
+            font-size: 1.18rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .brand-title span {
+            color: var(--primary);
+        }
+
+        .brand-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links-desktop {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links-desktop a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links-desktop a:hover {
+            color: var(--primary-light);
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 4px;
         }
 
         .lang-btn {
             background: transparent;
-            border: 1px solid var(--border);
+            border: none;
             color: var(--text-muted);
-            padding: 8px 18px; /* Botões levemente maiores */
-            margin-left: 10px;
+            padding: 6px 14px;
             border-radius: 20px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover {
-            border-color: var(--text-muted);
-            color: var(--text);
+            font-weight: 700;
+            font-size: 0.76rem;
+            transition: all 0.25s ease;
         }
 
         .lang-btn.active {
-            background-color: var(--primary-dark);
-            color: var(--primary);
-            border-color: var(--primary);
+            background-color: var(--primary);
+            color: #051B11;
+            box-shadow: 0 0 12px var(--primary-glow);
         }
 
+        /* Language Visibility Control */
         .lang-en { display: none; }
         body.en .lang-pt { display: none; }
         body.en .lang-en { display: block; }
-        body.en span.lang-en { display: inline; }
+        body.en span.lang-en, body.en strong.lang-en, body.en em.lang-en, body.en a.lang-en { display: inline; }
 
-        /* Container Layout */
+        /* ============================================== */
+        /* MAIN CONTAINER & SECTION HEADERS               */
+        /* ============================================== */
         .container {
-            max-width: 1100px; /* Reduzido para centralizar melhor a leitura */
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 80px 20px; /* Respiro extra no topo */
+            padding: 64px 28px 110px;
         }
 
-        /* Hero Section */
-        .hero {
+        .section-header {
             text-align: center;
-            margin-bottom: 80px; /* Mais distância até a aba "Sobre" */
+            margin: 96px 0 52px;
         }
 
-        .hero h1 {
-            font-size: 3.8rem;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .badge {
-            background-color: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .badge.highlight {
-            border-color: var(--primary);
-            color: var(--primary);
-            background-color: rgba(61, 220, 132, 0.1);
-        }
-
-        /* ABOUT SECTION */
-        .about-section {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 50px 40px; /* Mais padding interno */
-            margin-bottom: 80px; /* Mais margem inferior */
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .about-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .about-section p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Mais espaçamento entre botões */
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
+        .section-tag {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background-color: var(--surface-light);
-            color: var(--text);
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: 1px solid var(--border);
-            font-weight: 600;
-            transition: all 0.3s;
+            gap: 6px;
+            color: var(--primary-light);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            margin-bottom: 14px;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px 16px;
+            border-radius: 99px;
+            border: 1px solid var(--border-highlight);
         }
 
-        .contact-btn:hover {
-            background-color: var(--primary);
-            color: #000;
-            border-color: var(--primary);
-        }
-
-        /* TITULOS DE SEÇÃO */
         .section-title {
-            text-align: center;
-            font-size: 2.5rem; /* Levemente maior */
-            margin-bottom: 15px;
+            font-size: 2.55rem;
             color: #fff;
-            letter-spacing: -1px;
+            letter-spacing: -1.1px;
+            margin-bottom: 14px;
+            line-height: 1.15;
         }
 
         .section-subtitle {
-            text-align: center;
             color: var(--text-muted);
-            margin-bottom: 50px; /* Mais respiro antes do grid */
+            font-size: 1.1rem;
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        /* ============================================== */
+        /* HERO SECTION                                   */
+        /* ============================================== */
+        .hero {
+            text-align: center;
+            padding: 32px 0 56px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--border-highlight);
+            color: var(--primary-light);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            margin-bottom: 28px;
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.14);
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            margin-bottom: 24px;
+            letter-spacing: -1.8px;
+            line-height: 1.12;
+            color: #fff;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 .highlight-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, #34D399 45%, var(--kotlin-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 840px;
+            margin: 0 auto 40px;
+            line-height: 1.85;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-stack-ribbon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 920px;
+            margin: 0 auto;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stack-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--text);
+            transition: all 0.25s ease;
+        }
+
+        .stack-pill:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-2px);
+            background: var(--surface-hover);
+        }
+
+        .stack-pill i {
             font-size: 1.15rem;
         }
 
-        /* PROJECTS GRID */
-        .projects-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; /* Gap aumentado para 40px */
-            align-items: start;
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #051B11;
+            padding: 14px 32px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 0.96rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
         }
 
-        .projects-container.is-expanded-mode {
-            display: block; 
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(16, 185, 129, 0.55);
         }
 
-        .projects-container.is-expanded-mode .project-section:not(.expanded) {
-            display: none;
-        }
-
-        .project-section {
-            background-color: var(--surface);
-            border-radius: 24px;
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--surface);
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            overflow: hidden;
-            transition: all 0.5s ease;
+            font-weight: 700;
+            font-size: 0.96rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-light);
+            background: var(--surface-hover);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================== */
+        /* ARSENAL TÉCNICO & STACKS DOMINADAS             */
+        /* ============================================== */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 26px;
+            margin-bottom: 40px;
+        }
+
+        .skills-matrix .skill-card:nth-child(1),
+        .skills-matrix .skill-card:nth-child(2),
+        .skills-matrix .skill-card:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .skills-matrix .skill-card:nth-child(4),
+        .skills-matrix .skill-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 34px 30px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            gap: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
         }
 
-        .project-section.expanded {
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--card-color, var(--primary)), transparent);
+            opacity: 0.35;
+            transition: opacity 0.35s ease, height 0.35s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--card-color, var(--border-highlight));
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+            height: 4px;
+        }
+
+        .skill-card-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .skill-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .skill-card-title-group h3 {
+            font-size: 1.26rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+        }
+
+        .skill-card-title-group span.domain-label {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--card-color, var(--primary-light));
+            display: block;
+            margin-top: 3px;
+        }
+
+        .skill-card-desc {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            line-height: 1.68;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.79rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag i {
+            font-size: 0.92rem;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .skill-tag.featured {
+            background: rgba(16, 185, 129, 0.11);
+            border-color: rgba(16, 185, 129, 0.32);
+            color: var(--primary-light);
+        }
+
+        /* ============================================== */
+        /* PROJECTS SHOWCASE & CARDS                      */
+        /* ============================================== */
+        .projects-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .project-card-header {
+            padding: 42px 44px 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-eyebrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .project-category-badge {
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+        }
+
+        .project-title {
+            font-size: 2.35rem;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: -0.8px;
+            margin-bottom: 12px;
+        }
+
+        .project-lead {
+            font-size: 1.08rem;
+            color: var(--text-muted);
+            max-width: 960px;
+            line-height: 1.75;
+        }
+
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 22px;
+        }
+
+        .project-body {
+            padding: 40px 44px 44px;
+        }
+
+        /* ============================================== */
+        /* 2:2 INTERACTIVE PRODUCT SELECTOR GRID (NO BAR) */
+        /* ============================================== */
+        .selector-instruction {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            scroll-margin-top: 90px; /* Garante foco exato abaixo da navbar fixa ao rolar */
+        }
+
+        .selector-instruction-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            letter-spacing: 0.3px;
+        }
+
+        .project-tabs-nav {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 34px;
+            overflow: visible;
+        }
+
+        .p-tab-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 18px 22px;
+            border-radius: 16px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
             width: 100%;
         }
 
-        .project-header {
-            padding: 40px 30px 25px 30px;
-            text-align: center;
-            z-index: 2;
+        .p-tab-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
         }
 
-        .project-header h2 {
-            font-size: 2.2rem;
+        .p-tab-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+
+        .p-tab-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .p-tab-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            color: var(--text-dim);
+            transition: color 0.25s ease;
+        }
+
+        .p-tab-title {
+            font-size: 1rem;
+            font-weight: 800;
             color: #fff;
-            margin-bottom: 12px;
+            transition: color 0.25s ease;
+        }
+
+        .p-tab-action-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 99px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .p-tab-btn:hover {
+            border-color: var(--border-highlight);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .p-tab-btn:hover .p-tab-action-hint {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .p-tab-btn.active {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.06) 100%);
+            border-color: var(--primary);
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.2);
+        }
+
+        .p-tab-btn.active .p-tab-icon {
+            background: var(--primary);
+            color: #051B11;
+            border-color: var(--primary);
+        }
+
+        .p-tab-btn.active .p-tab-eyebrow {
+            color: var(--primary-light);
+        }
+
+        .p-tab-btn.active .p-tab-action-hint {
+            background: var(--primary);
+            color: #051B11;
+            border-color: var(--primary);
+            font-weight: 800;
+        }
+
+        .p-tab-content {
+            display: none;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .p-tab-content.active {
+            display: block;
+        }
+
+        /* ============================================== */
+        /* BRIEF PRODUCT SUMMARY BANNER (SHOWN ON CLICK)  */
+        /* ============================================== */
+        .product-brief-banner {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-highlight);
+            border-left: 4px solid var(--primary);
+            border-radius: 18px;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .product-brief-banner.pulse-emphasis {
+            animation: bannerPulse 0.9s ease-out;
+        }
+
+        .product-brief-banner.cms-theme {
+            border-left-color: var(--sky-blue);
+            border-color: rgba(14, 165, 233, 0.35);
+        }
+
+        .product-brief-banner.backend-theme {
+            border-left-color: var(--aws-amber);
+            border-color: rgba(255, 153, 0, 0.35);
+        }
+
+        .product-brief-banner.ai-theme {
+            border-left-color: var(--kotlin-purple);
+            border-color: rgba(127, 82, 255, 0.35);
+        }
+
+        .product-brief-banner h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-brief-banner p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ============================================== */
+        /* UNIFORM MEDIA GRIDS & UNCROPPED CONTAINMENT    */
+        /* ============================================== */
+        .app-screens-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 26px 0 38px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px;
+        }
+
+        .phone-frame-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .phone-frame-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Mantém o tamanho exato da moldura (~258px, 9:19) e exibe 100% da imagem sem cortes */
+        .phone-frame-card img {
+            width: 100%;
+            max-width: 258px;
+            aspect-ratio: 9 / 19;
+            object-fit: contain;
+            object-position: center;
+            padding: 4px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+            margin-bottom: 18px;
+            background: #080A0E;
+            cursor: zoom-in;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .phone-frame-card img:hover {
+            border-color: var(--primary);
+            transform: scale(1.015);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.22);
+        }
+
+        .phone-frame-card h4 {
+            font-size: 1.06rem;
+            color: #fff;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .phone-frame-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 380px;
+            line-height: 1.6;
+        }
+
+        .media-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+            margin: 28px 0;
+        }
+
+        .media-item-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .media-item-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Altura e proporção padronizadas (215px) exibindo a imagem completa sem cortes */
+        .media-item-card img {
+            width: 100%;
+            height: 215px;
+            aspect-ratio: 16 / 9.5;
+            object-fit: contain;
+            object-position: center;
+            padding: 6px;
+            display: block;
+            border-bottom: 1px solid var(--border);
+            background: #080A0E;
+            cursor: zoom-in;
+            transition: transform 0.25s ease, background-color 0.25s ease;
+        }
+
+        .media-item-card img:hover {
+            background: #0B0E14;
+            transform: scale(1.015);
+        }
+
+        .media-card-caption {
+            padding: 18px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .media-card-caption h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .media-card-caption p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================== */
+        /* FEATURE HIGHLIGHT BOXES                        */
+        /* ============================================== */
+        .feature-box-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 22px 0 32px;
+        }
+
+        .feature-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.25s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-box.purple {
+            border-left-color: var(--kotlin-purple);
+        }
+
+        .feature-box.sky {
+            border-left-color: var(--sky-blue);
+        }
+
+        .feature-box.amber {
+            border-left-color: var(--aws-amber);
+        }
+
+        .feature-box h4 {
+            font-size: 1.04rem;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .feature-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ============================================== */
+        /* BEFORE & AFTER SHOWCASE (DATAMOBILE UNCROPPED) */
+        /* ============================================== */
+        .before-after-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 32px 0;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px;
+            align-items: stretch;
+        }
+
+        .comparison-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px 18px;
+            transition: border-color 0.3s ease;
+        }
+
+        .comparison-col:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .comparison-header {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 5px 16px;
+            border-radius: 10px;
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.9px;
+        }
+
+        .header-before {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #F87171;
+        }
+
+        .header-after {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--primary-light);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Mantém o tamanho exato de 258px e proporção 9:19 sem cortar nenhuma parte da captura */
+        .comparison-col img {
+            width: 100%;
+            max-width: 258px;
+            aspect-ratio: 9 / 19;
+            object-fit: contain;
+            object-position: center;
+            padding: 4px;
+            margin: 0 auto;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+            background: #080A0E;
+            cursor: zoom-in;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .comparison-col img:hover {
+            border-color: var(--primary);
+            transform: scale(1.015);
+            box-shadow: 0 16px 34px rgba(16, 185, 129, 0.22);
+        }
+
+        .comparison-caption {
+            margin-top: 16px;
+            font-size: 0.89rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 380px;
+        }
+
+        .comparison-caption strong {
+            color: #fff;
+        }
+
+        /* ============================================== */
+        /* FULLSCREEN IMAGE LIGHTBOX MODAL                */
+        /* ============================================== */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(8, 10, 14, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-topbar {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10001;
+        }
+
+        .lightbox-close-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            color: #fff;
+            border: 1px solid var(--border-highlight);
+            padding: 10px 20px;
+            border-radius: 99px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            background: var(--primary);
+            color: #051B11;
+            transform: translateY(-2px);
+            box-shadow: 0 0 24px var(--primary-glow);
+        }
+
+        .lightbox-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 94vw;
+            max-height: 88vh;
+            transform: scale(0.95);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-overlay.active .lightbox-content-wrapper {
+            transform: scale(1);
+        }
+
+        .lightbox-img {
+            max-width: 92vw;
+            max-height: 78vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #080A0E;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+        }
+
+        .lightbox-caption {
+            margin-top: 14px;
+            padding: 8px 20px;
+            background: rgba(23, 27, 36, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            max-width: 85vw;
+        }
+
+        /* ============================================== */
+        /* ABOUT SECTION                                  */
+        /* ============================================== */
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 48px 52px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.1rem;
+            color: #fff;
+            margin-bottom: 18px;
             letter-spacing: -0.5px;
         }
 
-        .project-header p {
+        .about-content p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 90%;
-            margin: 0 auto;
+            font-size: 1.06rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
         }
 
-        .repo-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-
-        .repo-badges img {
-            height: 26px;
-            border-radius: 6px;
-        }
-
-        /* PREVIEW FADE */
-        .project-preview {
-            position: relative;
-            height: 250px; /* Preview levemente mais alto */
-            overflow: hidden;
+        /* ============================================== */
+        /* FOOTER                                         */
+        /* ============================================== */
+        footer {
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.5s ease;
-            background-color: #000;
-        }
-
-        .project-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            filter: brightness(0.7); /* Clareado levemente */
-            transition: filter 0.5s ease;
-        }
-
-        .fade-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(to bottom, rgba(30, 32, 41, 0), var(--surface));
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-
-        /* EXPAND BUTTON */
-        .expand-btn-container {
-            padding: 25px;
+            padding: 52px 24px;
             text-align: center;
-            background-color: var(--surface);
+            background: var(--bg-elevated);
+            color: var(--text-dim);
+            font-size: 0.92rem;
         }
 
-        .expand-btn {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .expand-btn:hover {
-            background-color: rgba(61, 220, 132, 0.1);
-        }
-
-        /* EXPANDED CONTENT */
-        .project-content {
-            display: none; 
-            padding: 20px 50px 50px 50px; /* Mais margem interna nas laterais */
-            animation: fadeIn 0.5s ease;
-        }
-
-        .project-section.expanded .project-preview {
-            height: auto; 
-            border-bottom: none;
-            background-color: transparent;
-        }
-
-        .project-section.expanded .project-preview img {
-            display: none; 
-        }
-
-        .project-section.expanded .fade-overlay {
-            opacity: 0; 
-        }
-
-        .project-section.expanded .project-content {
-            display: block;
-        }
-
-        .project-section.expanded .expand-btn {
-            background-color: var(--primary);
-            color: #000;
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* MOCKUPS & GRIDS */
-        .full-content-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .full-content-header h1 { 
-            font-size: 2.8rem;
-            color: #fff; 
-            margin-bottom: 10px; 
-            letter-spacing: -1px;
+        @keyframes bannerPulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+            70% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
-        .mockup-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 50px 0;
-        }
-
-        .mockup-grid div {
-            text-align: center;
-        }
-
-        .mockup-grid img {
-            width: 100%;
-            max-width: 380px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-
-        .gif-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 50px 0;
-            background-color: var(--surface-light);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .gif-item {
-            text-align: center;
-        }
-
-        .gif-item img {
-            width: 100%;
-            max-width: 220px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        .gif-item span {
-            display: block;
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--text);
-        }
-
-        /* Feature Cards */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 30px;
-            margin-bottom: 50px;
-        }
-
-        .feature-card {
-            background-color: var(--surface-light);
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 20px;
-            transition: transform 0.2s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        hr.divider {
-            border: 0;
-            height: 1px;
-            background: var(--border);
-            margin: 50px 0;
-        }
-
-        /* Lists */
-        ul.tech-list {
-            list-style: none;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        ul.tech-list li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        ul.tech-list li b {
-            color: #fff;
-        }
-
-        ul.tech-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* COMING SOON SECTION */
-        .coming-soon-section {
-            background-color: rgba(30, 32, 41, 0.4);
-            border: 2px dashed var(--border);
-            border-radius: 24px;
-            padding: 60px 40px;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .coming-soon-section h3 {
-            color: #fff;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .coming-soon-section p {
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 30px;
-            font-size: 1.15rem;
-        }
-
-        .spring-badge {
-            display: inline-block;
-            background-color: #6db33f;
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 992px) {
-            .projects-container, .feature-grid, .mockup-grid {
-                grid-template-columns: 1fr; 
+        /* ============================================== */
+        /* RESPONSIVE BREAKPOINTS                         */
+        /* ============================================== */
+        @media (max-width: 1024px) {
+            .skills-matrix {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .gif-grid {
+            .skills-matrix .skill-card:nth-child(n) {
+                grid-column: span 1;
+            }
+            .skills-matrix .skill-card:nth-child(5) {
+                grid-column: span 2;
+            }
+            .feature-box-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
-            .project-content {
-                padding: 20px;
-            }
+        }
+
+        @media (max-width: 820px) {
+            .hero h1 { font-size: 2.45rem; }
+            .top-navbar { padding: 14px 20px; }
+            .nav-links-desktop { display: none; }
+            .skills-matrix { grid-template-columns: 1fr; }
+            .skills-matrix .skill-card:nth-child(n) { grid-column: span 1; }
+            .project-tabs-nav { grid-template-columns: 1fr; }
+            .project-card-header, .project-body { padding: 26px 20px; }
+            .app-screens-showcase, .media-showcase-grid { grid-template-columns: 1fr; padding: 20px; }
+            .comparison-row { grid-template-columns: 1fr; padding: 20px; }
+            .about-card { padding: 32px 24px; }
+            .lightbox-topbar { top: 14px; right: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header-top">
-        <button class="lang-btn active" onclick="setLanguage('pt')">PT-BR</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-    </div>
+    <!-- ============================================== -->
+    <!-- TOP NAVIGATION & BRAND BAR                     -->
+    <!-- ============================================== -->
+    <header class="top-navbar">
+        <a href="#" class="brand-logo-container">
+            <img src="assets/lincesdev-icon.png" alt="Linces Dev Logo" class="brand-logo-img" onerror="this.src='https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/icon_final.png'">
+            <div class="brand-text-block">
+                <span class="brand-title">LINCES<span>DEV</span></span>
+                <span class="brand-subtitle">Software Studio</span>
+            </div>
+        </a>
 
-    <div class="container">
-        
-        <div class="hero">
-            <h1 class="lang-pt">Engenharia Mobile de Alto Padrão</h1>
-            <h1 class="lang-en">High-End Mobile Engineering</h1>
-            
-            <p class="lang-pt">
-                Especialista Android unindo o ecossistema moderno (<b>Jetpack Compose & Kotlin</b>) com soluções robustas para sistemas legados corporativos (<b>Java & XML</b>).
-            </p>
-            <p class="lang-en">
-                Android specialist bridging the modern ecosystem (<b>Jetpack Compose & Kotlin</b>) with robust solutions for enterprise legacy systems (<b>Java & XML</b>).
-            </p>
+        <div class="navbar-actions">
+            <ul class="nav-links-desktop">
+                <li><a href="#arsenal" class="lang-pt">Arsenal Técnico</a><a href="#arsenal" class="lang-en">Tech Arsenal</a></li>
+                <li><a href="#projetos" class="lang-pt">Projetos Realizados</a><a href="#projetos" class="lang-en">Projects</a></li>
+                <li><a href="#composestore">ComposeStore</a></li>
+                <li><a href="#datamobile">DataMobile</a></li>
+                <li><a href="#sobre" class="lang-pt">Sobre</a><a href="#sobre" class="lang-en">About</a></li>
+                <li><a href="#contato" class="lang-pt">Contato</a><a href="#contato" class="lang-en">Contact</a></li>
+            </ul>
 
-            <div class="skills">
-                <div class="badge">Kotlin 2.0+</div>
-                <div class="badge">Java</div>
-                <div class="badge highlight">Jetpack Compose</div>
-                <div class="badge">XML Views</div>
-                <div class="badge highlight">Clean Architecture</div>
-                <div class="badge">MVVM & UDF</div>
-                <div class="badge">Hilt (DI)</div>
-                <div class="badge highlight">Room / SQLite</div>
-                <div class="badge">ONNX Edge AI</div>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('pt', event)">PT</button>
+                <button class="lang-btn" onclick="setLanguage('en', event)">EN</button>
             </div>
         </div>
+    </header>
 
-        <div class="about-section">
-            <h2 style="margin-bottom: 15px;">Marcos Linces</h2>
-            
-            <p class="lang-pt">
-                Desenvolvedor Android com foco na criação, manutenção e evolução de aplicações móveis. Possuo uma base sólida na sustentação e refatoração de sistemas legados, e atuo ativamente na modernização de bases de código para o ecossistema moderno. Tenho forte domínio arquitetural (Offline-First, Clean Architecture) e do ciclo de vida completo de publicação na Play Store.
+    <main class="container">
+
+        <!-- ============================================== -->
+        <!-- HERO SECTION                                   -->
+        <!-- ============================================== -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span>⚡</span>
+                <span class="lang-pt">Engenharia Mobile & Sistemas Distribuídos • Praticante de IA Agêntica</span>
+                <span class="lang-en">Mobile Engineering & Distributed Systems • Agentic AI Practitioner</span>
+            </div>
+
+            <h1>
+                <span class="lang-pt">Engenharia de Software de Alto Padrão por <span class="highlight-gradient">Marcos Linces</span></span>
+                <span class="lang-en">High-End Software Engineering by <span class="highlight-gradient">Marcos Linces</span></span>
+            </h1>
+
+            <p class="lead lang-pt">
+                Especialista em ecossistemas móveis modernos (<b>Kotlin 2.0+, Jetpack Compose, Material Design 3, Offline-First</b>) unindo arquitetura de ponta a ponta: <b>APIs corporativas em Spring Boot 3</b>, <b>infraestrutura em nuvem na AWS</b>, <b>painéis CMS com React & TypeScript</b> e desenvolvimento acelerado com <b>Google Antigravity</b>.
             </p>
-            <p class="lang-en">
-                Android Developer focused on creating, maintaining, and evolving mobile applications. I have a solid foundation in supporting and refactoring legacy systems, actively working to modernize codebases to the latest ecosystem standards. I possess strong architectural skills (Offline-First, Clean Architecture) and full mastery of the Play Store publishing lifecycle.
+            <p class="lead lang-en">
+                Specialist in modern mobile ecosystems (<b>Kotlin 2.0+, Jetpack Compose, Material Design 3, Offline-First</b>) bridging end-to-end architecture: <b>enterprise APIs in Spring Boot 3</b>, <b>AWS cloud infrastructure</b>, <b>CMS dashboards with React & TypeScript</b>, and accelerated development via <b>Google Antigravity</b>.
             </p>
 
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/" target="_blank" class="contact-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
+            <div class="hero-cta-group">
+                <a href="#projetos" class="btn-primary">
+                    <span class="lang-pt">Explorar Projetos Realizados ↓</span>
+                    <span class="lang-en">Explore Completed Projects ↓</span>
+                </a>
+                <a href="https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <i class="devicon-linkedin-plain" style="font-size: 1.1rem; color: #0A66C2;"></i>
                     LinkedIn
                 </a>
-                
-                <a href="mailto:marcoslinces@outlook.com" class="contact-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <a href="mailto:marcoslinces@outlook.com" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
                     </svg>
                     <span class="lang-pt">Fale Comigo</span>
-                    <span class="lang-en">Contact Me</span>
+                    <span class="lang-en">Get in Touch</span>
                 </a>
             </div>
+
+            <!-- Official Stack Icons Ribbon -->
+            <div class="hero-stack-ribbon">
+                <div class="stack-pill"><i class="devicon-kotlin-plain colored"></i> Kotlin 2.0+</div>
+                <div class="stack-pill"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose</div>
+                <div class="stack-pill"><i class="devicon-android-plain colored"></i> Android SDK 35</div>
+                <div class="stack-pill"><i class="devicon-spring-original colored"></i> Spring Boot 3</div>
+                <div class="stack-pill"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS S3</div>
+                <div class="stack-pill"><i class="devicon-react-original colored"></i> React 19 & TS</div>
+                <div class="stack-pill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL / Room</div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- ARSENAL TECNOLÓGICO & STACKS DOMINADAS         -->
+        <!-- ============================================== -->
+        <section id="arsenal">
+            <div class="section-header">
+                <span class="section-tag lang-pt">Competências de Engenharia</span>
+                <span class="section-tag lang-en">Engineering Competencies</span>
+                <h2 class="section-title lang-pt">Arsenal Técnico & Stacks Dominadas</h2>
+                <h2 class="section-title lang-en">Technical Arsenal & Core Stacks</h2>
+                <p class="section-subtitle lang-pt">
+                    Habilidades comprovadas em produção organizadas por camadas arquiteturais, com domínio do ciclo completo de produtos digitais.
+                </p>
+                <p class="section-subtitle lang-en">
+                    Production-proven skills organized by architectural layers, with end-to-end mastery of digital product lifecycles.
+                </p>
+            </div>
+
+            <div class="skills-matrix">
+                <!-- CARD 1: ANDROID & MOBILE -->
+                <div class="skill-card" style="--card-color: #3DDC84;">
+                    <div class="skill-card-top">
+                        <div class="skill-card-icon">
+                            <i class="devicon-android-plain colored"></i>
+                        </div>
+                        <div class="skill-card-title-group">
+                            <h3 class="lang-pt">Android & Mobile</h3>
+                            <h3 class="lang-en">Android & Mobile</h3>
+                            <span class="domain-label">Native UI • Offline-First</span>
+                        </div>
+                    </div>
+                    <p class="skill-card-desc lang-pt">
+                        Arquitetura nativa declarativa 100% Jetpack Compose com animações em Canvas offscreen, sincronização Room Database e refatoração de sistemas legados.
+                    </p>
+                    <p class="skill-card-desc lang-en">
+                        100% Jetpack Compose declarative native architecture with offscreen Canvas animations, Room Database sync, and legacy enterprise refactoring.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured"><i class="devicon-kotlin-plain colored"></i> Kotlin 2.0+</span>
+                        <span class="skill-tag featured"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose</span>
+                        <span class="skill-tag featured">Material Design 3</span>
+                        <span class="skill-tag featured"><i class="devicon-sqlite-plain colored"></i> Room (Offline-First)</span>
+                        <span class="skill-tag">Clean Architecture & UDF</span>
+                        <span class="skill-tag">Coroutines & StateFlow</span>
+                        <span class="skill-tag">Dagger Hilt (DI)</span>
+                        <span class="skill-tag">Type-Safe Navigation</span>
+                        <span class="skill-tag"><i class="devicon-firebase-plain colored"></i> FCM Silent Push</span>
+                        <span class="skill-tag">ONNX Edge AI</span>
+                        <span class="skill-tag"><i class="devicon-java-plain colored"></i> Java & XML Views</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: BACKEND & APIS -->
+                <div class="skill-card" style="--card-color: #10B981;">
+                    <div class="skill-card-top">
+                        <div class="skill-card-icon">
+                            <i class="devicon-spring-original colored"></i>
+                        </div>
+                        <div class="skill-card-title-group">
+                            <h3 class="lang-pt">Backend & APIs</h3>
+                            <h3 class="lang-en">Backend & APIs</h3>
+                            <span class="domain-label">Microservices • RESTful</span>
+                        </div>
+                    </div>
+                    <p class="skill-card-desc lang-pt">
+                        Construção de APIs corporativas em Spring Boot 3 com validação estrita de contratos, máquina de estados de pedidos (OMS) e persistência relacional.
+                    </p>
+                    <p class="skill-card-desc lang-en">
+                        Enterprise APIs in Spring Boot 3 featuring strict contract validation, Order Management State Machines (OMS), and relational persistence.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured"><i class="devicon-spring-original colored"></i> Spring Boot 3</span>
+                        <span class="skill-tag featured"><i class="devicon-kotlin-plain colored"></i> Kotlin Server</span>
+                        <span class="skill-tag"><i class="devicon-java-plain colored"></i> Java 21</span>
+                        <span class="skill-tag featured"><i class="devicon-hibernate-plain colored"></i> Spring Data JPA</span>
+                        <span class="skill-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL / H2</span>
+                        <span class="skill-tag">Batch Dirty Checking</span>
+                        <span class="skill-tag">OMS State Machine</span>
+                        <span class="skill-tag"><i class="devicon-postman-plain colored"></i> Postman Contracts</span>
+                    </div>
+                </div>
+
+                <!-- CARD 3: CLOUD & STORAGE -->
+                <div class="skill-card" style="--card-color: #FF9900;">
+                    <div class="skill-card-top">
+                        <div class="skill-card-icon">
+                            <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                        </div>
+                        <div class="skill-card-title-group">
+                            <h3 class="lang-pt">Cloud & Infraestrutura</h3>
+                            <h3 class="lang-en">Cloud & Infrastructure</h3>
+                            <span class="domain-label">AWS S3 • Sync Engine</span>
+                        </div>
+                    </div>
+                    <p class="skill-card-desc lang-pt">
+                        Armazenamento escalável de objetos em nuvem, sanitização e entrega otimizada de imagens e sincronização resiliente em background com WorkManager.
+                    </p>
+                    <p class="skill-card-desc lang-en">
+                        Scalable cloud object storage, media asset sanitization and delivery, plus resilient background synchronization with WorkManager.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS S3 Buckets</span>
+                        <span class="skill-tag featured">WorkManager Sync</span>
+                        <span class="skill-tag">Multi-Tenant Storage</span>
+                        <span class="skill-tag">CDN Ready Assets</span>
+                        <span class="skill-tag"><i class="devicon-githubactions-plain colored"></i> CI/CD Pipelines</span>
+                        <span class="skill-tag"><i class="devicon-docker-plain colored"></i> Docker Containers</span>
+                    </div>
+                </div>
+
+                <!-- CARD 4: FRONTEND WEB & CMS -->
+                <div class="skill-card" style="--card-color: #0EA5E9;">
+                    <div class="skill-card-top">
+                        <div class="skill-card-icon">
+                            <i class="devicon-react-original colored"></i>
+                        </div>
+                        <div class="skill-card-title-group">
+                            <h3 class="lang-pt">Frontend Web & Painéis CMS</h3>
+                            <h3 class="lang-en">Frontend Web & CMS Dashboards</h3>
+                            <span class="domain-label">React 19 • Headless Admin</span>
+                        </div>
+                    </div>
+                    <p class="skill-card-desc lang-pt">
+                        Desenvolvimento de portais administrativos ricos para controle em tempo real de vitrines móveis, gestão de catálogos, BI executivo e disparo de campanhas push.
+                    </p>
+                    <p class="skill-card-desc lang-en">
+                        Rich administrative portals for real-time mobile storefront orchestration, catalog management, executive BI, and push campaign broadcasting.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured"><i class="devicon-react-original colored"></i> React 19</span>
+                        <span class="skill-tag featured"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                        <span class="skill-tag featured"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS</span>
+                        <span class="skill-tag"><i class="devicon-vitejs-plain colored"></i> Vite</span>
+                        <span class="skill-tag featured">@dnd-kit (Drag & Drop)</span>
+                        <span class="skill-tag">Executive BI Charts</span>
+                        <span class="skill-tag">Live Mobile Simulator</span>
+                    </div>
+                </div>
+
+                <!-- CARD 5: ENGENHARIA AGÊNTICA & IA -->
+                <div class="skill-card" style="--card-color: #7F52FF;">
+                    <div class="skill-card-top">
+                        <div class="skill-card-icon">
+                            <i class="devicon-google-plain colored"></i>
+                        </div>
+                        <div class="skill-card-title-group">
+                            <h3 class="lang-pt">Engenharia Agêntica & IA</h3>
+                            <h3 class="lang-en">Agentic AI Engineering</h3>
+                            <span class="domain-label">Google Antigravity • Subagents</span>
+                        </div>
+                    </div>
+                    <p class="skill-card-desc lang-pt">
+                        Orquestração de subagentes autônomos em workspace unificado (Monorepo Virtual) para refatoração transversal entre Android, Backend Spring e CMS Web.
+                    </p>
+                    <p class="skill-card-desc lang-en">
+                        Orchestrating autonomous subagents within unified workspaces to execute cross-stack refactoring across Android, Spring Boot, and Web CMS.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag featured"><i class="devicon-google-plain colored"></i> Google Antigravity IDE</span>
+                        <span class="skill-tag featured">Gemini 2.0 Pro & Claude</span>
+                        <span class="skill-tag">Arquitetura de Subagentes</span>
+                        <span class="skill-tag">ACP Protocol</span>
+                        <span class="skill-tag">TDD Assistido por IA</span>
+                        <span class="skill-tag">Validação Fullstack Automatizada</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- TÍTULO DE PROJETOS REALIZADOS (RECRUTADORES)   -->
+        <!-- ============================================== -->
+        <div id="projetos" class="section-header" style="margin-top: 90px; margin-bottom: 50px;">
+            <span class="section-tag lang-pt">Portfólio Prático & Cases Reais</span>
+            <span class="section-tag lang-en">Practical Portfolio & Real Case Studies</span>
+            <h2 class="section-title lang-pt">Projetos Realizados & Arquitetura em Produção</h2>
+            <h2 class="section-title lang-en">Completed Projects & Production Architecture</h2>
+            <p class="section-subtitle lang-pt">
+                Explore abaixo os ecossistemas desenvolvidos, demonstrando tanto a criação de produtos modernos do zero quanto a modernização profunda de sistemas corporativos legados.
+            </p>
+            <p class="section-subtitle lang-en">
+                Explore the ecosystems built below, showcasing both greenfield multi-product platforms and deep modernization of mission-critical legacy systems.
+            </p>
         </div>
 
-        <h2 class="section-title lang-pt">💼 Projetos e Case de Arquitetura</h2>
-        <h2 class="section-title lang-en">💼 Projects & Architecture Case Study</h2>
-        <p class="section-subtitle lang-pt">Trabalhos em produção e repositórios de código aberto focados em engenharia de software.</p>
-        <p class="section-subtitle lang-en">Production work and open-source repositories focused on software engineering.</p>
+        <!-- ============================================== -->
+        <!-- PROJETO 1: COMPOSESTORE OMNICHANNEL ECOSYSTEM  -->
+        <!-- ============================================== -->
+        <section id="composestore" class="projects-wrapper">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-eyebrow">
+                        <span class="project-category-badge lang-pt">Ecossistema Omnichannel • Produtos Integrados</span>
+                        <span class="project-category-badge lang-en">Omnichannel Ecosystem • Integrated Products</span>
+                        <span style="font-size: 0.82rem; color: var(--text-dim); font-weight: 700;">Android App • Web CMS • Spring Boot 3 • AWS S3</span>
+                    </div>
 
-        <!-- CONTAINER DOS PROJETOS -->
-        <div class="projects-container" id="projects-wrapper">
-            
-            <!-- PROJECT 1: COMPOSESTORE KIT -->
-            <div class="project-section" id="proj-compose">
-                <div class="project-header">
-                    <h2>ComposeStore</h2>
-                    <p class="lang-pt">App de E-Commerce Completo • Jetpack Compose + Clean Architecture</p>
-                    <p class="lang-en">Full E-Commerce App • Jetpack Compose + Clean Architecture</p>
-                    
-                    <div class="repo-badges">
-                        <img src="https://img.shields.io/badge/Kotlin-2.0%2B-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
-                        <img src="https://img.shields.io/badge/Compose-M3-4285F4?style=for-the-badge&logo=android&logoColor=white" alt="Compose" />
-                        <img src="https://img.shields.io/badge/Clean%20Arch-UDF-00C853?style=for-the-badge" alt="Clean Arch" />
+                    <h2 class="project-title">ComposeStore Omnichannel Ecosystem</h2>
+
+                    <p class="project-lead lang-pt">
+                        Solução corporativa que conecta um aplicativo nativo Android 100% Jetpack Compose (Offline-First com Room) a um painel administrativo Web CMS em React/TypeScript e backend Spring Boot 3 + AWS S3. Selecione cada produto ou camada abaixo para inspecionar sua arquitetura e telas.
+                    </p>
+                    <p class="project-lead lang-en">
+                        Enterprise solution connecting a 100% Jetpack Compose native Android app (Offline-First with Room) to a React/TypeScript Web CMS and Spring Boot 3 + AWS S3 backend. Click any product or layer below to inspect its architecture and screens.
+                    </p>
+
+                    <div class="project-badges">
+                        <span class="skill-tag featured"><i class="devicon-kotlin-plain colored"></i> Kotlin 2.0+</span>
+                        <span class="skill-tag featured"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose M3</span>
+                        <span class="skill-tag featured"><i class="devicon-sqlite-plain colored"></i> Room Offline-First</span>
+                        <span class="skill-tag featured"><i class="devicon-spring-original colored"></i> Spring Boot 3 API</span>
+                        <span class="skill-tag featured"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS S3 Cloud</span>
+                        <span class="skill-tag featured"><i class="devicon-react-original colored"></i> React 19 + TypeScript CMS</span>
+                        <span class="skill-tag"><i class="devicon-firebase-plain colored"></i> Silent Push FCM</span>
                     </div>
                 </div>
 
-                <div class="project-preview">
-                    <img src="assets/ide4.png" alt="Preview App">
-                    <div class="fade-overlay"></div>
-                </div>
-                
-                <div class="expand-btn-container">
-                    <button class="expand-btn" onclick="toggleProject('proj-compose')">
-                        <span class="lang-pt" id="btn-text-proj-compose-pt">Ver Arquitetura do Projeto ▼</span>
-                        <span class="lang-en" id="btn-text-proj-compose-en">View Project Architecture ▼</span>
-                    </button>
-                </div>
+                <div class="project-body">
 
-                <!-- CONTEÚDO EXPANDIDO -->
-                <div class="project-content">
-                    <div class="full-content-header">
-                        <h1>ComposeStore</h1>
-                        <p style="font-size: 1.1rem;"><b>E-Commerce Android App • Modular, Scalable & Offline-First Ready</b></p>
-                        <br>
-                        
-                        <p class="lang-pt" style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                            <i>Projeto autoral desenvolvido do zero para demonstrar domínio em excelência técnica e padrões modernos do Android. Construído 100% com Jetpack Compose e Material Design 3, o aplicativo implementa Arquitetura Limpa (Clean Architecture) e Fluxo Unidirecional de Dados (UDF). Atualmente, a base de código está sendo escalada para o modelo Headless, recebendo persistência local com Room e consumo de uma API proprietária em Spring Boot.</i>
-                        </p>
-                        <p class="lang-en" style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                            <i>A comprehensive, from-scratch E-Commerce application built to showcase technical excellence and modern Android standards. Developed 100% with Jetpack Compose and Material Design 3, the app implements Clean Architecture and Unidirectional Data Flow (UDF). Currently, the codebase is scaling to a Headless model, receiving local persistence via Room and consuming a custom Spring Boot API.</i>
-                        </p>
+                    <!-- ÂNCORA DE ROLAGEM AUTOMÁTICA AO TROCAR DE CAMADA -->
+                    <div id="selector-anchor" class="selector-instruction">
+                        <span class="selector-instruction-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/>
+                            </svg>
+                            <span class="lang-pt">Selecione um produto ou camada abaixo para visualizar os detalhes técnicos e capturas:</span>
+                            <span class="lang-en">Click any product or layer below to view technical details and screenshots:</span>
+                        </span>
                     </div>
 
-                    <div class="mockup-grid">
-                        <div>
-                            <img src="https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(1).jpg" alt="Home Screen (Dark M3)">
-                            <p style="margin-top: 15px; color: var(--text-muted); font-size: 1.05rem;"><b>Home Screen & Dynamic Catalog (Dark M3)</b></p>
-                        </div>
-                        <div>
-                            <img src="https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(2).jpg" alt="Campaigns Listing">
-                            <p style="margin-top: 15px; color: var(--text-muted); font-size: 1.05rem;"><b>Campaigns, Banners & Product Listing</b></p>
-                        </div>
+                    <!-- 2:2 INTERACTIVE PRODUCT SELECTOR GRID -->
+                    <div class="project-tabs-nav">
+                        <!-- ITEM 1 -->
+                        <button class="p-tab-btn active" onclick="switchProjectTab('tab-app', event)">
+                            <div class="p-tab-left">
+                                <div class="p-tab-icon">📱</div>
+                                <div class="p-tab-text">
+                                    <span class="p-tab-eyebrow lang-pt">Produto 01 • Cliente Mobile</span>
+                                    <span class="p-tab-eyebrow lang-en">Product 01 • Mobile Client</span>
+                                    <span class="p-tab-title">App Android (Compose & Room)</span>
+                                </div>
+                            </div>
+                            <span class="p-tab-action-hint">
+                                <span class="lang-pt"> Explorar ↗</span>
+                                <span class="lang-en"> Explore ↗</span>
+                            </span>
+                        </button>
+
+                        <!-- ITEM 2 -->
+                        <button class="p-tab-btn" onclick="switchProjectTab('tab-cms', event)">
+                            <div class="p-tab-left">
+                                <div class="p-tab-icon">💻</div>
+                                <div class="p-tab-text">
+                                    <span class="p-tab-eyebrow lang-pt">Produto 02 • Painel Gestor</span>
+                                    <span class="p-tab-eyebrow lang-en">Product 02 • Admin Portal</span>
+                                    <span class="p-tab-title">Plataforma Web CMS (React 19)</span>
+                                </div>
+                            </div>
+                            <span class="p-tab-action-hint">
+                                <span class="lang-pt"> Explorar ↗</span>
+                                <span class="lang-en"> Explore ↗</span>
+                            </span>
+                        </button>
+
+                        <!-- ITEM 3 -->
+                        <button class="p-tab-btn" onclick="switchProjectTab('tab-backend', event)">
+                            <div class="p-tab-left">
+                                <div class="p-tab-icon">⚡</div>
+                                <div class="p-tab-text">
+                                    <span class="p-tab-eyebrow lang-pt">Camada 03 • API & Cloud</span>
+                                    <span class="p-tab-eyebrow lang-en">Layer 03 • API & Cloud</span>
+                                    <span class="p-tab-title">Core Backend (Spring Boot & AWS)</span>
+                                </div>
+                            </div>
+                            <span class="p-tab-action-hint">
+                                <span class="lang-pt"> Explorar ↗</span>
+                                <span class="lang-en"> Explore ↗</span>
+                            </span>
+                        </button>
+
+                        <!-- ITEM 4 -->
+                        <button class="p-tab-btn" onclick="switchProjectTab('tab-ai', event)">
+                            <div class="p-tab-left">
+                                <div class="p-tab-icon">🤖</div>
+                                <div class="p-tab-text">
+                                    <span class="p-tab-eyebrow lang-pt">Camada 04 • Fluxo Agêntico</span>
+                                    <span class="p-tab-eyebrow lang-en">Layer 04 • Agentic Workflow</span>
+                                    <span class="p-tab-title">Engenharia Google Antigravity</span>
+                                </div>
+                            </div>
+                            <span class="p-tab-action-hint">
+                                <span class="lang-pt"> Explorar ↗</span>
+                                <span class="lang-en"> Explore ↗</span>
+                            </span>
+                        </button>
                     </div>
 
-                    <hr class="divider">
-
-                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">🚀 Decisões Técnicas e Funcionalidades</h2>
-                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">🚀 Technical Decisions & Features</h2>
-
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <h3 class="lang-pt">💎 100% Jetpack Compose & M3</h3>
-                            <h3 class="lang-en">💎 100% Jetpack Compose & M3</h3>
-                            <p class="lang-pt">Zero layouts XML. Construído com tokens modernos do Material Design 3, suporte dinâmico a temas e componentes adaptativos otimizados para performance de renderização.</p>
-                            <p class="lang-en">Zero XML layouts. Built with modern Material Design 3 tokens, dynamic theme support, and adaptive components optimized for rendering performance.</p>
+                    <!-- ============================================== -->
+                    <!-- TAB 1: PRODUTO 1 - ANDROID APP                 -->
+                    <!-- ============================================== -->
+                    <div id="tab-app" class="p-tab-content active">
+                        <!-- Explicação breve exibida ao selecionar o Produto 1 -->
+                        <div class="product-brief-banner">
+                            <h3>📱 ComposeStore Android App</h3>
+                            <p class="lang-pt">
+                                Evoluído de um UI Kit modular para um aplicativo <b>Premium Plug-and-Play</b>. Opera com <i>Unidirectional Data Flow</i>, navegação Type-Safe (<code>kotlinx.serialization</code>), tema dinâmico Material 3 Edge-to-Edge e persistência local <b>Room Database</b> com controle de <code>syncState</code>.
+                            </p>
+                            <p class="lang-en">
+                                Evolved from a modular UI Kit into a <b>Plug-and-Play Premium App</b>. Operates with <i>Unidirectional Data Flow</i>, Type-Safe navigation (<code>kotlinx.serialization</code>), Edge-to-Edge Material 3 theming, and local <b>Room Database</b> persistence with <code>syncState</code> tracking.
+                            </p>
                         </div>
-                        <div class="feature-card">
-                            <h3 class="lang-pt">🏗️ Clean Architecture & UDF</h3>
-                            <h3 class="lang-en">🏗️ Clean Architecture & UDF</h3>
-                            <p class="lang-pt">Separação rigorosa de responsabilidades. Repositórios plug-and-play e gerenciamento de estado reativo, facilitando a transição de dados mockados para persistência local (Room) e consumo de API (Retrofit).</p>
-                            <p class="lang-en">Strict separation of concerns. Plug-and-play repositories and reactive state management, allowing seamless transition from mocked data to local persistence (Room) and API consumption (Retrofit).</p>
+
+                        <div class="feature-box-grid">
+                            <div class="feature-box">
+                                <h4 class="lang-pt">📦 Persistência Room & Offline-First</h4>
+                                <h4 class="lang-en">📦 Room Persistence & Offline-First</h4>
+                                <p class="lang-pt">Substituição de repositórios em memória por <code>Room Database</code> como fonte única da verdade (Single Source of Truth), garantindo carregamento instantâneo mesmo offline.</p>
+                                <p class="lang-en">Transition from in-memory repositories to <code>Room Database</code> as the Single Source of Truth, ensuring instant loading even offline.</p>
+                            </div>
+                            <div class="feature-box purple">
+                                <h4 class="lang-pt">🧭 Type-Safe Navigation & Clean UDF</h4>
+                                <h4 class="lang-en">🧭 Type-Safe Navigation & Clean UDF</h4>
+                                <p class="lang-pt">Roteamento fortemente tipado com <code>Navigation Compose</code> e <code>kotlinx.serialization</code>, cobrindo Splash, Auth, Home, Busca, Produto, Checkout, Pedidos e Devoluções.</p>
+                                <p class="lang-en">Strongly-typed routing with <code>Navigation Compose</code> and <code>kotlinx.serialization</code>, covering Splash, Auth, Home, Search, Product, Checkout, Orders, and Returns.</p>
+                            </div>
+                            <div class="feature-box sky">
+                                <h4 class="lang-pt">✨ Canvas Shimmer & Feedback Háptico</h4>
+                                <h4 class="lang-en">✨ Canvas Shimmer & Haptic Feedback</h4>
+                                <p class="lang-pt">Animações nativas usando <code>CompositingStrategy.Offscreen</code> e <code>BlendMode.SrcAtop</code> na SplashScreen, combinadas com temas Light/Dark M3 e resposta tátil.</p>
+                                <p class="lang-en">Native animations using <code>CompositingStrategy.Offscreen</code> and <code>BlendMode.SrcAtop</code> on SplashScreen, paired with Light/Dark M3 themes and tactile feedback.</p>
+                            </div>
                         </div>
-                        <div class="feature-card">
-                            <h3 class="lang-pt">🛡️ Type-Safe Navigation</h3>
-                            <h3 class="lang-en">🛡️ Type-Safe Navigation</h3>
-                            <p class="lang-pt">Navegação segura e robusta utilizando o novo <code>Navigation Compose</code> em conjunto com <code>kotlinx.serialization</code>, eliminando strings hardcoded e garantindo passagem de argumentos tipados.</p>
-                            <p class="lang-en">Secure and robust routing using the new <code>Navigation Compose</code> paired with <code>kotlinx.serialization</code>, eliminating hardcoded strings and ensuring typed argument passing.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3 class="lang-pt">🌍 Multi-Idioma Nativo (i18n)</h3>
-                            <h3 class="lang-en">🌍 Native Multi-Language (i18n)</h3>
-                            <p class="lang-pt">Localização nativa para <b>Inglês</b> e <b>Português (Brasil)</b> com fallback automático do dispositivo, além de formatação dinâmica de moedas utilizando <code>Locale.getDefault()</code>.</p>
-                            <p class="lang-en">Native localization for <b>English</b> and <b>Portuguese (Brazil)</b> with automated device fallback, plus dynamic currency formatting via <code>Locale.getDefault()</code>.</p>
-                        </div>
-                    </div>
 
-                    <hr class="divider">
-
-                    <h2 class="lang-pt" style="color: #fff;">🏛️ Qualidade de Código & Testabilidade</h2>
-                    <h2 class="lang-en" style="color: #fff;">🏛️ Code Quality & Testability</h2>
-                    <p class="lang-pt" style="margin-top: 15px; font-size: 1.1rem;">A injeção de dependências permite que a interface visual inteira seja renderizada através de repositórios fakes sem a necessidade de um back-end ativo. O projeto foi desenhado sob a premissa de <b>alta testabilidade</b> e fácil escalabilidade horizontal para novos recursos.</p>
-                    <p class="lang-en" style="margin-top: 15px; font-size: 1.1rem;">Dependency injection allows the entire UI to be rendered via fake repositories without needing an active backend. The project was designed under the premise of <b>high testability</b> and easy horizontal scalability for new features.</p>
-                
-                    <hr class="divider">
-
-                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">⚙️ API Design & Testes Automatizados</h2>
-                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">⚙️ API Design & Automated Testing</h2>
-
-                    <div style="background-color: var(--surface-light); padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
-                        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-                            
-                            <!-- Texto explicativo -->
-                            <div style="flex: 1; min-width: 300px;">
-                                <p class="lang-pt" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
-                                    Para garantir a integridade dos dados entre o App Android e o futuro painel CMS, a API RESTful proprietária foi desenhada com foco em confiabilidade.
+                        <div class="app-screens-showcase">
+                            <!-- IMAGEM COMPOSE 1 -->
+                            <div class="phone-frame-card">
+                                <img src="assets/imagemcompose1.jpg" alt="ComposeStore App - Home Dinâmica, Banners & Destaques (M3)" onerror="this.src='https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(1).jpg'">
+                                <h4 class="lang-pt">Home Dinâmica, Banners & Destaques (M3)</h4>
+                                <h4 class="lang-en">Dynamic Home, Banners & Featured Catalog (M3)</h4>
+                                <p class="lang-pt">
+                                    Carrossel automático com <code>HorizontalPager</code>, atalhos de departamentos, vitrine de mais vendidos com cálculo de parcelamento e suporte nativo a Dark/Light Mode.
                                 </p>
-                                <p class="lang-en" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
-                                    To ensure data integrity between the Android App and the upcoming CMS dashboard, the proprietary RESTful API was designed with reliability in mind.
+                                <p class="lang-en">
+                                    Automated <code>HorizontalPager</code> carousel, department shortcuts, best-sellers showcase with installment calculation, and native Dark/Light Mode support.
                                 </p>
-
-                                <ul class="tech-list lang-pt">
-                                    <li><b>Testes de Contrato (Postman):</b> Scripts de validação em JavaScript para garantir status codes corretos (ex: 201 Created) e tipagem do JSON.</li>
-                                    <li><b>Arquitetura Headless:</b> Back-end isolado servindo como fonte única da verdade para plataformas mobile e web simultaneamente.</li>
-                                </ul>
-                                <ul class="tech-list lang-en">
-                                    <li><b>Contract Testing (Postman):</b> JavaScript validation scripts to ensure correct status codes (e.g., 201 Created) and JSON typing.</li>
-                                    <li><b>Headless Architecture:</b> Isolated backend serving as the single source of truth for both mobile and web platforms simultaneously.</li>
-                                </ul>
                             </div>
 
-                            <!-- Imagem do Postman -->
-                            <div style="flex: 1; min-width: 300px; text-align: center;">
-                                <img src="assets/portfolio_postman.png" alt="Postman API Testing" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.4);">
-                                <p class="lang-pt" style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);"><em>Validação automatizada de payload de criação de produto.</em></p>
-                                <p class="lang-en" style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);"><em>Automated validation of product creation payload.</em></p>
+                            <!-- IMAGEM COMPOSE 2 -->
+                            <div class="phone-frame-card">
+                                <img src="assets/imagemcompose2.jpg" alt="ComposeStore App - Campanhas Sazonais, Cupons & Experiência de Compra" onerror="this.src='https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/Image_6zs5hv6zs5hv6zs5%20(2).jpg'">
+                                <h4 class="lang-pt">Campanhas Sazonais, Cupons & Experiência de Compra</h4>
+                                <h4 class="lang-en">Seasonal Campaigns, Coupons & Shopping UX</h4>
+                                <p class="lang-pt">
+                                    Cards promocionais com gradientes M3, badges de desconto e frete grátis, adição rápida ao carrinho com <code>SnackbarHost</code> reativo e navegação fluida.
+                                </p>
+                                <p class="lang-en">
+                                    Promotional cards with M3 gradients, discount and free-shipping badges, quick cart actions with reactive <code>SnackbarHost</code>, and fluid routing.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SINERGIA COM O CMS -->
+                        <div class="media-showcase-grid">
+                            <div class="media-item-card">
+                                <img src="assets/VitrineHomeCMS.png" alt="Sincronização Live: Do Painel CMS direto para o App Android" onerror="this.src='assets/imagemcompose1.jpg'">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Sincronização Live: Do Painel CMS direto para o App Android</h4>
+                                    <h4 class="lang-en">Live Sync: From Web CMS directly to the Android App</h4>
+                                    <p class="lang-pt">Quando o gestor altera a ordem das seções no CMS Web, um Silent Push via FCM acorda o app Android e atualiza o banco Room sem exigir reload manual.</p>
+                                    <p class="lang-en">When a manager reorders sections in the Web CMS, an FCM Silent Push wakes the Android app and updates the Room database without manual reload.</p>
+                                </div>
                             </div>
 
+                            <div class="media-item-card">
+                                <img src="assets/LoginCMS.png" alt="Design System Coeso entre Mobile & Web" onerror="this.src='assets/lincesdev-brand.jpg'">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Design System Coeso entre Mobile & Web</h4>
+                                    <h4 class="lang-en">Cohesive Design System Across Mobile & Web</h4>
+                                    <p class="lang-pt">Tokens semânticos de cor, tipografia e elevação compartilhados entre o MaterialTheme do Android e o Tailwind CSS do CMS.</p>
+                                    <p class="lang-en">Semantic color, typography, and elevation tokens shared between Android's MaterialTheme and the CMS's Tailwind CSS.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- TAB 2: PRODUTO 2 - PLATAFORMA WEB CMS          -->
+                    <!-- ============================================== -->
+                    <div id="tab-cms" class="p-tab-content">
+                        <!-- Explicação breve exibida ao selecionar o Produto 2 -->
+                        <div class="product-brief-banner cms-theme">
+                            <h3>💻 ComposeStore Web CMS & Dashboard</h3>
+                            <p class="lang-pt">
+                                Plataforma administrativa Headless em <b>React 19 + TypeScript</b> que comanda remotamente o aplicativo Android. Permite reordenar vitrines via Drag-and-Drop com preview ao vivo, configurar mosaicos de departamentos, gerir pedidos (OMS) e disparar notificações Push.
+                            </p>
+                            <p class="lang-en">
+                                Headless administrative platform in <b>React 19 + TypeScript</b> that remotely orchestrates the Android app. Enables Drag-and-Drop storefront reordering with live preview, department mosaic configuration, order management (OMS), and Push broadcasting.
+                            </p>
+                        </div>
+
+                        <div class="feature-box-grid">
+                            <div class="feature-box">
+                                <h4 class="lang-pt">📊 Dashboard Executivo & BI</h4>
+                                <h4 class="lang-en">📊 Executive Dashboard & BI</h4>
+                                <p class="lang-pt">Monitoramento gerencial de GMV, ticket médio, taxa de conversão, curva de receitas diárias e alertas operacionais de estoque em tempo real.</p>
+                                <p class="lang-en">Real-time executive tracking of GMV, average ticket, conversion rate, daily revenue curves, and low-stock operational alerts.</p>
+                            </div>
+                            <div class="feature-box purple">
+                                <h4 class="lang-pt">🔀 Construtor Visual Drag & Drop</h4>
+                                <h4 class="lang-en">🔀 Visual Drag-and-Drop Builder</h4>
+                                <p class="lang-pt">Orquestração da tela inicial do aplicativo Android arrastando blocos com <code>@dnd-kit</code> e visualizando o resultado em um simulador mobile interativo.</p>
+                                <p class="lang-en">Orchestrate the Android app's home screen by dragging blocks with <code>@dnd-kit</code> and previewing changes inside an interactive mobile simulator.</p>
+                            </div>
+                            <div class="feature-box sky">
+                                <h4 class="lang-pt">🔔 Central de Campanhas & Push</h4>
+                                <h4 class="lang-en">🔔 Campaign & Push Notification Hub</h4>
+                                <p class="lang-pt">Criação e disparo de notificações promocionais segmentadas ou globais diretamente para a <code>NotificationDestination</code> dos dispositivos Android.</p>
+                                <p class="lang-en">Create and broadcast targeted or global promotional notifications directly to the <code>NotificationDestination</code> of Android devices.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-showcase-grid">
+                            <div class="media-item-card">
+                                <img src="assets/DashboardCMS.png" alt="Dashboard Executivo de Business Intelligence">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Dashboard Executivo de Business Intelligence</h4>
+                                    <h4 class="lang-en">Executive Business Intelligence Dashboard</h4>
+                                    <p class="lang-pt">Visão consolidada das vendas realizadas pelo aplicativo Android, métricas de performance e alertas de catálogo.</p>
+                                    <p class="lang-en">Consolidated view of sales generated by the Android app, performance metrics, and catalog alerts.</p>
+                                </div>
+                            </div>
+
+                            <div class="media-item-card">
+                                <img src="assets/CMSGestaoPedidos.png" alt="Gestão Completa de Pedidos (OMS)">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Gestão Completa de Pedidos (OMS)</h4>
+                                    <h4 class="lang-en">Full Order Management System (OMS)</h4>
+                                    <p class="lang-pt">Controle do ciclo de vida dos pedidos originados no checkout mobile: aprovação, faturamento, código de rastreio e devoluções.</p>
+                                    <p class="lang-en">Lifecycle control for orders placed via mobile checkout: approval, invoicing, tracking codes, and returns.</p>
+                                </div>
+                            </div>
+
+                            <div class="media-item-card">
+                                <img src="assets/CategoriasCMS.png" alt="Gestor de Departamentos & Mosaicos">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Gestor de Departamentos & Mosaicos</h4>
+                                    <h4 class="lang-en">Department & Mosaic Grid Manager</h4>
+                                    <p class="lang-pt">Configuração de categorias, subcategorias, selos de destaque (<code>badgeText</code>) e proporções de exibição (<code>HERO_FULL</code>, <code>TALL</code>, <code>STANDARD</code>) no app.</p>
+                                    <p class="lang-en">Configure categories, subcategories, promotional badges (<code>badgeText</code>), and tile proportions (<code>HERO_FULL</code>, <code>TALL</code>, <code>STANDARD</code>) in the app.</p>
+                                </div>
+                            </div>
+
+                            <div class="media-item-card">
+                                <img src="assets/VitrineHomeCMS.png" alt="Construtor Visual de Vitrine com Preview Mobile">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Construtor Visual de Vitrine com Preview Mobile</h4>
+                                    <h4 class="lang-en">Visual Storefront Builder with Mobile Preview</h4>
+                                    <p class="lang-pt">Autonomia total para equipes comerciais alterarem a vitrine do aplicativo Android sem precisar publicar novas versões na Play Store.</p>
+                                    <p class="lang-en">Full autonomy for commercial teams to update the Android storefront without publishing new builds to the Play Store.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- TAB 3: BACKEND SPRING BOOT & AWS S3            -->
+                    <!-- ============================================== -->
+                    <div id="tab-backend" class="p-tab-content">
+                        <!-- Explicação breve exibida ao selecionar o Backend -->
+                        <div class="product-brief-banner backend-theme">
+                            <h3>⚡ Core Backend: Spring Boot 3 & AWS S3 Cloud</h3>
+                            <p class="lang-pt">
+                                API RESTful corporativa que atua como barramento central entre o App Android e o Web CMS. Gerencia transações de estoque, contratos DTO validados, persistência relacional via Spring Data JPA e armazenamento de mídia em buckets AWS S3.
+                            </p>
+                            <p class="lang-en">
+                                Enterprise RESTful API acting as the central hub between the Android App and Web CMS. Manages inventory transactions, validated DTO contracts, relational persistence via Spring Data JPA, and media storage in AWS S3 buckets.
+                            </p>
+                        </div>
+
+                        <div class="feature-box-grid">
+                            <div class="feature-box amber">
+                                <h4 class="lang-pt">☁️ AWS S3 Buckets & Pipeline de Mídia</h4>
+                                <h4 class="lang-en">☁️ AWS S3 Buckets & Media Pipeline</h4>
+                                <p class="lang-pt">Armazenamento em nuvem para fotos de produtos e banners enviados pelo CMS, servindo URLs otimizadas para o <code>SubcomposeAsyncImage</code> (Coil) no Android.</p>
+                                <p class="lang-en">Cloud storage for product photos and banners uploaded via CMS, serving optimized URLs to <code>SubcomposeAsyncImage</code> (Coil) on Android.</p>
+                            </div>
+                            <div class="feature-box">
+                                <h4 class="lang-pt">🛒 Máquina de Estados OMS & Estoque</h4>
+                                <h4 class="lang-en">🛒 OMS State Machine & Inventory</h4>
+                                <p class="lang-pt">Reserva transacional de saldo no checkout, baixa definitiva na expedição e estorno automático de estoque em cancelamentos ou logística reversa.</p>
+                                <p class="lang-en">Transactional stock reservation at checkout, physical deduction upon shipping, and automated inventory rollback on cancellations or returns.</p>
+                            </div>
+                            <div class="feature-box purple">
+                                <h4 class="lang-pt">🛡️ Contratos DTO & Tratamento Global</h4>
+                                <h4 class="lang-en">🛡️ DTO Contracts & Global Error Advice</h4>
+                                <p class="lang-pt">Isolamento estrito entre entidades JPA e payloads de rede com validação Bean Validation (<code>@Valid</code>) e respostas padronizadas para o Retrofit.</p>
+                                <p class="lang-en">Strict isolation between JPA entities and network payloads with Bean Validation (<code>@Valid</code>) and standardized responses for Retrofit.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-showcase-grid">
+                            <div class="media-item-card">
+                                <img src="assets/BucketAWS.png" alt="Infraestrutura de Objetos na AWS S3" onerror="this.src='assets/ImagensAPIBucketAWS.png'">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Infraestrutura de Objetos na AWS S3</h4>
+                                    <h4 class="lang-en">AWS S3 Object Storage Infrastructure</h4>
+                                    <p class="lang-pt">Organização segura de buckets para distribuição rápida de imagens para o aplicativo Android e painel administrativo.</p>
+                                    <p class="lang-en">Secure bucket organization for high-speed media delivery to both the Android app and admin dashboard.</p>
+                                </div>
+                            </div>
+
+                            <div class="media-item-card">
+                                <img src="assets/ImagensAPIBucketAWS.png" alt="Integração Spring Boot 3 + AWS SDK + Testes Postman" onerror="this.src='assets/portfolio_postman.png'">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Integração Spring Boot 3 + AWS SDK + Testes Postman</h4>
+                                    <h4 class="lang-en">Spring Boot 3 + AWS SDK + Postman Contract Testing</h4>
+                                    <p class="lang-pt">Upload multipart validado no servidor e persistência automática das URLs no banco relacional consumido pelos clientes web e mobile.</p>
+                                    <p class="lang-en">Server-validated multipart uploads and automated URL persistence in the relational database consumed by web and mobile clients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- TAB 4: ENGENHARIA COM GOOGLE ANTIGRAVITY       -->
+                    <!-- ============================================== -->
+                    <div id="tab-ai" class="p-tab-content">
+                        <!-- Explicação breve exibida ao selecionar Engenharia Agêntica -->
+                        <div class="product-brief-banner ai-theme">
+                            <h3>🤖 Engenharia Agêntica com Google Antigravity</h3>
+                            <p class="lang-pt">
+                                Fluxo de desenvolvimento moderno orquestrado por agentes autônomos em Monorepo Virtual, mantendo contratos de API, entidades Room e componentes visuais sincronizados entre o Android Studio, IntelliJ IDEA e VS Code.
+                            </p>
+                            <p class="lang-en">
+                                Modern development workflow orchestrated by autonomous agents in a Virtual Monorepo, keeping API contracts, Room entities, and visual components synchronized across Android Studio, IntelliJ IDEA, and VS Code.
+                            </p>
+                        </div>
+
+                        <div class="feature-box-grid">
+                            <div class="feature-box">
+                                <h4 class="lang-pt">🧠 Orquestração Fullstack em Monorepo Virtual</h4>
+                                <h4 class="lang-en">🧠 Fullstack Orchestration in Virtual Monorepo</h4>
+                                <p class="lang-pt">Conexão simultânea dos repositórios Android, Spring Boot e React CMS sob diretrizes arquiteturais unificadas, garantindo sincronia imediata entre camadas.</p>
+                                <p class="lang-en">Simultaneous connection of Android, Spring Boot, and React CMS repositories under unified architectural rules, ensuring instant sync across layers.</p>
+                            </div>
+                            <div class="feature-box purple">
+                                <h4 class="lang-pt">📝 Planejamento Arquitetural & Auditoria</h4>
+                                <h4 class="lang-en">📝 Architectural Planning & Code Auditing</h4>
+                                <p class="lang-pt">Uso de agentes com janela de contexto massiva (Gemini Pro / Claude) para auditar segurança, eliminar duplicações e gerar migrações sem regressões.</p>
+                                <p class="lang-en">Leveraging massive-context agents (Gemini Pro / Claude) to audit security, eliminate duplication, and generate regression-free migrations.</p>
+                            </div>
+                            <div class="feature-box sky">
+                                <h4 class="lang-pt">🚀 Validação Assistida de Compilação</h4>
+                                <h4 class="lang-en">🚀 Assisted Build & Compile Verification</h4>
+                                <p class="lang-pt">Ciclo agêntico automatizado executando builds Gradle, Maven e Vite no terminal para assegurar 100% de integridade sintática antes do commit.</p>
+                                <p class="lang-en">Automated agentic loop executing Gradle, Maven, and Vite builds in the terminal to guarantee 100% syntactic integrity prior to commit.</p>
+                            </div>
+                        </div>
+
+                        <div class="media-showcase-grid">
+                            <div class="media-item-card">
+                                <img src="assets/ExemploAntigravity1.png" alt="Google Antigravity IDE em Ação">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Google Antigravity IDE em Ação</h4>
+                                    <h4 class="lang-en">Google Antigravity IDE in Action</h4>
+                                    <p class="lang-pt">Execução de tarefas multi-camadas sincronizando contratos da API Spring Boot com os DAOs e ViewModels do aplicativo Android.</p>
+                                    <p class="lang-en">Executing multi-layer tasks synchronizing Spring Boot API contracts with Android DAOs and ViewModels.</p>
+                                </div>
+                            </div>
+
+                            <div class="media-item-card">
+                                <img src="assets/ExemploAntigravity2.png" alt="Planejamento Sistemático & Rastreabilidade">
+                                <div class="media-card-caption">
+                                    <h4 class="lang-pt">Planejamento Sistemático & Rastreabilidade</h4>
+                                    <h4 class="lang-en">Systematic Planning & Traceability</h4>
+                                    <p class="lang-pt">Injeção controlada de código com revisão de diffs, preservando os padrões de Clean Architecture e Material Design 3.</p>
+                                    <p class="lang-en">Controlled code injection with diff reviews, preserving Clean Architecture and Material Design 3 standards.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- PROJECT 2: DATAMOBILE ENTERPRISE -->
-            <div class="project-section" id="proj-data">
-                <div class="project-header">
-                    <h2>DataMobile Enterprise</h2>
-                    <p class="lang-pt">Sustentação de App Corporativo • Java & XML Legacy</p>
-                    <p class="lang-en">Enterprise App Maintenance • Java & XML Legacy</p>
-                    
-                    <div class="repo-badges">
-                        <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java" />
-                        <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" />
-                        <img src="https://img.shields.io/badge/Material_Design_3-757575?style=for-the-badge&logo=material-design&logoColor=white" alt="Material 3" />
-                    </div>
-                </div>
-
-                <div class="project-preview">
-                    <img src="assets/ide2.png" alt="Preview XML Layout">
-                    <div class="fade-overlay"></div>
-                </div>
-
-                <div class="expand-btn-container">
-                    <button class="expand-btn" onclick="toggleProject('proj-data')">
-                        <span class="lang-pt" id="btn-text-proj-data-pt">Ver Projeto Completo ▼</span>
-                        <span class="lang-en" id="btn-text-proj-data-en">View Full Project ▼</span>
-                    </button>
-                </div>
-
-                <!-- CONTEÚDO EXPANDIDO -->
-                <div class="project-content">
-                    <div class="full-content-header">
-                        <h1>DataMobile</h1>
-                        <p style="font-size: 1.1rem;">Sistema de Gestão de Ordens de Serviço e Análise de Outsourcing.</p>
-                        <br>
-                        <p class="lang-pt" style="color: var(--primary); font-size: 1.05rem; max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 20px; text-align: left;">
-                            <b>Modernização de Software Legado:</b> Reestruturação de aplicativo Android nativo com foco em Material Design 3 e otimização de performance.
-                        </p>
-                        <p class="lang-en" style="color: var(--primary); font-size: 1.05rem; max-width: 800px; margin: 0 auto; border-left: 4px solid var(--primary); padding-left: 20px; text-align: left;">
-                            <b>Legacy Software Modernization:</b> Restructuring of a native Android application focusing on Material Design 3 and performance optimization.
-                        </p>
+            <!-- ============================================== -->
+            <!-- PROJETO 2: DATAMOBILE ENTERPRISE               -->
+            <!-- ============================================== -->
+            <div id="datamobile" class="project-card">
+                <div class="project-card-header">
+                    <div class="project-eyebrow">
+                        <span class="project-category-badge" style="background: rgba(237, 139, 0, 0.15); border-color: rgba(237, 139, 0, 0.35); color: #F59E0B;">Case Corporativo Real • Modernização de Legado</span>
+                        <span style="font-size: 0.82rem; color: var(--text-dim); font-weight: 700;">Java • XML • Material Design 3 • ONNX Edge AI</span>
                     </div>
 
-                    <h2 class="lang-pt" style="margin-top: 50px; margin-bottom: 20px; color: #fff;">📱 Sobre o Projeto</h2>
-                    <h2 class="lang-en" style="margin-top: 50px; margin-bottom: 20px; color: #fff;">📱 About the Project</h2>
-                    <p class="lang-pt" style="font-size: 1.1rem; color: var(--text-muted);">
-                        O <b>DataMobile</b> é uma aplicação corporativa robusta voltada para técnicos de campo. O sistema permite a gestão detalhada de manutenções e ordens de serviço através de uma arquitetura <b>Offline-First</b>, garantindo que o fluxo de trabalho não seja interrompido por falta de conectividade.
+                    <h2 class="project-title">DataMobile Enterprise (Antes vs. Depois)</h2>
+
+                    <p class="project-lead lang-pt">
+                        Modernização profunda de aplicativo corporativo de missão crítica utilizado por técnicos em campo para gestão de Ordens de Serviço (O.S.), sincronização offline de check-in e análise de outsourcing. A base de código original em Java/XML foi reestruturada para os padrões modernos do <b>Material Design 3</b>, com ganho exponencial de usabilidade e inclusão de <b>Reconhecimento Facial On-Device (Edge AI)</b>.
                     </p>
-                    <p class="lang-en" style="font-size: 1.1rem; color: var(--text-muted);">
-                        <b>DataMobile</b> is a robust enterprise application aimed at field technicians. The system allows detailed management of maintenance and service orders through an <b>Offline-First</b> architecture, ensuring that the workflow is not interrupted by a lack of connectivity.
+                    <p class="project-lead lang-en">
+                        Comprehensive modernization of a mission-critical enterprise application used by field technicians for Service Order (S.O.) management, offline check-in synchronization, and outsourcing analysis. The legacy Java/XML codebase was restructured to <b>Material Design 3</b> standards, featuring exponential UX gains and local <b>On-Device Facial Recognition (Edge AI)</b>.
                     </p>
 
-                    <div class="gif-grid">
-                        <div class="gif-item">
-                            <img src="assets/login.gif" alt="Login">
-                            <span class="lang-pt">Acesso e Segurança</span>
-                            <span class="lang-en">Access & Security</span>
-                        </div>
-                        <div class="gif-item">
-                            <img src="assets/OS.png" alt="Ordens de Serviço">
-                            <span class="lang-pt">Gestão de O.S.</span>
-                            <span class="lang-en">O.S. Management</span>
-                        </div>
-                        <div class="gif-item">
-                            <img src="assets/check_in.gif" alt="Check-in">
-                            <span class="lang-pt">Fluxo de Check-in</span>
-                            <span class="lang-en">Check-in Flow</span>
-                        </div>
+                    <div class="project-badges">
+                        <span class="skill-tag featured"><i class="devicon-java-plain colored"></i> Android Nativo (Java)</span>
+                        <span class="skill-tag featured">Material Design 3</span>
+                        <span class="skill-tag featured"><i class="devicon-sqlite-plain colored"></i> SQLite & DAO Pattern</span>
+                        <span class="skill-tag featured">ONNX Runtime (Edge AI)</span>
+                        <span class="skill-tag">Sincronização Offline-First</span>
+                        <span class="skill-tag">Geolocalização Precisa</span>
                     </div>
-                    <p class="lang-pt" style="text-align: center; color: var(--text-muted); font-size: 1.05rem;"><em>Visualização da interface modernizada: Login, Detalhes de OS e Sincronização de Check-in em tempo real.</em></p>
-                    <p class="lang-en" style="text-align: center; color: var(--text-muted); font-size: 1.05rem;"><em>Visualizing the modernized interface: Login, OS Details, and Real-time Check-in Synchronization.</em></p>
+                </div>
 
-                    <hr class="divider">
+                <div class="project-body">
+                    <div class="section-header" style="margin-top: 4px; margin-bottom: 30px;">
+                        <h3 class="lang-pt" style="color: #fff; font-size: 1.75rem; font-weight: 800;">Galeria Comparativa: O Impacto da Refatoração</h3>
+                        <h3 class="lang-en" style="color: #fff; font-size: 1.75rem; font-weight: 800;">Comparative Gallery: Refactoring Impact</h3>
+                        <p class="lang-pt" style="color: var(--text-muted); font-size: 0.96rem;">
+                            Comparação lado a lado entre a interface legada anterior e o aplicativo modernizado por Marcos Linces (clique em qualquer tela para ampliar).
+                        </p>
+                        <p class="lang-en" style="color: var(--text-muted); font-size: 0.96rem;">
+                            Side-by-side comparison between the legacy interface and the modernized application refactored by Marcos Linces (click any screen to enlarge).
+                        </p>
+                    </div>
 
-                    <h2 class="lang-pt" style="margin-bottom: 25px; color: #fff;">🛠 Tecnologias e Práticas Utilizadas</h2>
-                    <h2 class="lang-en" style="margin-bottom: 25px; color: #fff;">🛠 Technologies and Practices</h2>
+                    <!-- BEFORE AND AFTER COMPARISONS -->
+                    <div class="before-after-container">
 
-                    <ul class="tech-list lang-pt">
-                        <li><b>Android Nativo (Java):</b> Interface moderna com Material Design 3 e AndroidX.</li>
-                        <li><b>Consumo de API REST:</b> Integração com backend legado em Delphi.</li>
-                        <li><b>Sincronização Inteligente:</b> Algoritmo para evitar redundância de dados e tratamento de erros de rede.</li>
-                        <li><b>Localização Geográfica:</b> Rastreamento e registro de coordenadas para ordens de serviço.</li>
-                        <li><b>Arquitetura:</b> Aplicação de padrões como DAO (Data Access Object) e Singleton com banco de dados SQLite.</li>
-                    </ul>
-                    <ul class="tech-list lang-en">
-                        <li><b>Native Android (Java):</b> Modern interface with Material Design 3 and AndroidX.</li>
-                        <li><b>REST API Consumption:</b> Integration with a legacy Delphi backend.</li>
-                        <li><b>Smart Synchronization:</b> Algorithm to avoid data redundancy and handle network errors.</li>
-                        <li><b>Geolocation:</b> Tracking and coordinate registration for service orders.</li>
-                        <li><b>Architecture:</b> Application of patterns like DAO (Data Access Object) and Singleton with SQLite database.</li>
-                    </ul>
+                        <!-- CASO 1: LOGIN -->
+                        <div class="comparison-row">
+                            <div class="comparison-col">
+                                <span class="comparison-header header-before">⚠️ Antes: Interface Legada</span>
+                                <img src="assets/telaloginappantesdasmelhorias.png" alt="DataMobile Antes - Layout de Login Legado">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Layout Cinza Rígido:</strong> Campos sem contraste, ausência de floating labels, botões sem feedback tátil e hierarquia tipográfica defasada.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>Rigid Legacy Layout:</strong> Low contrast, no floating labels, outdated buttons, and poor typographic hierarchy.
+                                </p>
+                            </div>
 
-                    <div style="background-color: var(--surface-light); padding: 30px; border-radius: 20px; margin-top: 40px; border-left: 4px solid var(--primary);">
-                        <h3 class="lang-pt" style="color: #fff; margin-bottom: 12px;">🧩 Reconhecimento Facial (Extra)</h3>
-                        <h3 class="lang-en" style="color: #fff; margin-bottom: 12px;">🧩 Facial Recognition (Extra)</h3>
-                        <p class="lang-pt" style="font-size: 1.05rem;">Implementação de validação biométrica com o modelo <code>model.onnx</code> rodando localmente (Edge AI), garantindo a autenticidade do técnico na abertura de ordens.</p>
-                        <p class="lang-en" style="font-size: 1.05rem;">Implementation of biometric validation using the <code>model.onnx</code> model running locally (Edge AI), ensuring technician authenticity when opening orders.</p>
+                            <div class="comparison-col">
+                                <span class="comparison-header header-after">✅ Depois: Material Design 3</span>
+                                <img src="assets/login.gif" alt="DataMobile Depois - Login Refatorado em Material Design 3" onerror="this.src='https://marcospalinces.github.io/assets/login.gif'">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Acesso Moderno e Fluido:</strong> Tokens visuais M3, superfícies arredondadas, validação de campos em tempo real e transições suaves.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>Modern & Fluid Access:</strong> M3 tokens, rounded surfaces, real-time input validation, and smooth loading states.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CASO 2: ORDENS DE SERVIÇO / CHECKOUT -->
+                        <div class="comparison-row">
+                            <div class="comparison-col">
+                                <span class="comparison-header header-before">⚠️ Antes: Interface Legada</span>
+                                <img src="assets/DESTAQUEcheckoutantesdasmelhorias.png" alt="DataMobile Antes - Tela de Checkout e O.S. Legada">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Alta Carga Cognitiva:</strong> Formulários empilhados sem espaçamento, textos condensados e ações primárias sem destaque visual.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>High Cognitive Load:</strong> Cluttered forms, unspaced inputs, condensed typography, and indistinct buttons.
+                                </p>
+                            </div>
+
+                            <div class="comparison-col">
+                                <span class="comparison-header header-after">✅ Depois: Material Design 3</span>
+                                <img src="assets/OS.png" alt="DataMobile Depois - Gestão Modular de Ordens de Serviço (M3)" onerror="this.src='https://marcospalinces.github.io/assets/OS.png'">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Gestão Modular de O.S.:</strong> Cards com elevação clara, badges semânticos para status de atendimento e botões de ação de alta visibilidade.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>Modular S.O. Management:</strong> Elevated cards, semantic color badges for order statuses, and high-visibility CTAs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CASO 3: CHECK-IN EM CAMPO -->
+                        <div class="comparison-row">
+                            <div class="comparison-col">
+                                <span class="comparison-header header-before">⚠️ Antes: Interface Legada</span>
+                                <img src="assets/teladecheck-inantesdasmelhorias.png" alt="DataMobile Antes - Tela de Check-in Legada">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Fluxo Confuso:</strong> Ausência de feedback claro de envio e falta de confirmação visual das coordenadas GPS capturadas.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>Confusing Flow:</strong> Lack of submission feedback and ambiguous GPS coordinate confirmation.
+                                </p>
+                            </div>
+
+                            <div class="comparison-col">
+                                <span class="comparison-header header-after">✅ Depois: Material Design 3</span>
+                                <img src="assets/check_in.gif" alt="DataMobile Depois - Fluxo de Check-in Modernizado (M3)" onerror="this.src='https://marcospalinces.github.io/assets/check_in.gif'">
+                                <p class="comparison-caption lang-pt">
+                                    <strong>Check-in Confiável e Rápido:</strong> Rastreamento automático de coordenadas, sincronização assíncrona tolerante a falhas e feedback visual imediato.
+                                </p>
+                                <p class="comparison-caption lang-en">
+                                    <strong>Reliable Field Check-in:</strong> Automated coordinate capture, fault-tolerant offline synchronization, and clear success states.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- EDGE AI HIGHLIGHT -->
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border-highlight); padding: 30px; border-radius: 20px; margin-top: 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+                        <div style="font-size: 2rem; background: rgba(16, 185, 129, 0.15); width: 62px; height: 62px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            🧩
+                        </div>
+                        <div style="flex: 1; min-width: 280px;">
+                            <h4 class="lang-pt" style="color: #fff; font-size: 1.22rem; font-weight: 800; margin-bottom: 6px;">
+                                Inovação com Inteligência Artificial na Borda (Edge AI)
+                            </h4>
+                            <h4 class="lang-en" style="color: #fff; font-size: 1.22rem; font-weight: 800; margin-bottom: 6px;">
+                                Edge AI Innovation: On-Device Facial Biometrics
+                            </h4>
+                            <p class="lang-pt" style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.7;">
+                                Para garantir que apenas o técnico credenciado execute a abertura da Ordem de Serviço, integrei o modelo <code>model.onnx</code> rodando localmente via ONNX Runtime no dispositivo Android. Essa arquitetura permite validação facial biométrica em menos de 100ms <strong>sem depender de conexão com a internet</strong> em áreas remotas.
+                            </p>
+                            <p class="lang-en" style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.7;">
+                                To ensure only authorized technicians open service orders, I integrated an on-device <code>model.onnx</code> neural network via ONNX Runtime. This enables biometric face validation under 100ms <strong>with zero dependency on internet connectivity</strong> in remote locations.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div> <!-- Fim do Grid de Projetos -->
+        </section>
 
         <!-- ============================================== -->
-        <!-- COMING SOON SECTION                            -->
+        <!-- SOBRE / MARCOS LINCES                          -->
         <!-- ============================================== -->
-        <div class="coming-soon-section">
-            <h3 class="lang-pt">⏳ Escalando a Arquitetura (Em Desenvolvimento)</h3>
-            <h3 class="lang-en">⏳ Scaling the Architecture (In Development)</h3>
-            
-            <p class="lang-pt">
-                O <b>ComposeStore</b> está sendo expandido para uma plataforma Headless corporativa. A camada Android receberá integração direta com persistência local <b>Room Database</b> e consumo via <b>Retrofit</b>. O Back-end oficial já está em desenvolvimento, garantindo uma API escalável do zero, com segurança de endpoints e banco de dados relacional.
+        <section id="sobre" style="margin-top: 90px;">
+            <div class="about-card">
+                <div class="about-content">
+                    <h2 class="lang-pt">Engenharia Focada em Resiliência e Valor de Negócio</h2>
+                    <h2 class="lang-en">Engineering Focused on Resilience and Business Impact</h2>
+
+                    <p class="lang-pt">
+                        Com sólida trajetória no desenvolvimento de software nativo e corporativo, atuo conectando o que há de mais refinado no desenvolvimento mobile com a estabilidade de backends e nuvem. Minha experiência abrange desde a sustentação e modernização de grandes sistemas legados (Java, XML e SQLite) até a concepção de plataformas completas de nova geração com <b>Kotlin, Jetpack Compose, Room, Spring Boot 3, AWS e React</b>.
+                    </p>
+                    <p class="lang-en">
+                        With a solid background in enterprise and native software development, I bridge cutting-edge mobile architecture with mission-critical backend and cloud stability. My experience spans from maintaining and modernizing large-scale legacy systems (Java, XML, SQLite) to architecting next-generation omnichannel platforms with <b>Kotlin, Jetpack Compose, Room, Spring Boot 3, AWS, and React</b>.
+                    </p>
+
+                    <p class="lang-pt">
+                        Pioneiro na adoção de <b>Programação Agêntica com o Google Antigravity</b>, aplico metodologias de IA para planejamento arquitetural profundo, testes de contrato sistemáticos e entrega de software sem regressões com velocidade e precisão multiplicadas.
+                    </p>
+                    <p class="lang-en">
+                        A pioneer in adopting <b>Agentic Programming with Google Antigravity</b>, I leverage AI-native workflows for deep architectural planning, systematic contract testing, and regression-free software delivery with unmatched velocity and precision.
+                    </p>
+
+                    <div class="hero-cta-group" style="justify-content: flex-start; margin-bottom: 0;">
+                        <a href="https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                            LinkedIn
+                        </a>
+                        <a href="mailto:marcoslinces@outlook.com" class="btn-secondary">
+                            marcoslinces@outlook.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- CONTATO                                        -->
+        <!-- ============================================== -->
+        <section id="contato" class="section-header" style="margin-top: 100px; margin-bottom: 30px;">
+            <span class="section-tag lang-pt">Oportunidades & Contratação</span>
+            <span class="section-tag lang-en">Opportunities & Hiring</span>
+            <h2 class="section-title lang-pt">Vamos Construir o Próximo Grande Software Juntos?</h2>
+            <h2 class="section-title lang-en">Let's Build the Next Great Software Together</h2>
+            <p class="section-subtitle lang-pt">
+                Aberto a propostas de contratação, posições sênior/especialista e projetos de consultoria de alto impacto.
             </p>
-            <p class="lang-en">
-                <b>ComposeStore</b> is being expanded into an enterprise Headless platform. The Android layer will receive direct integration with <b>Room Database</b> for local persistence and network consumption via <b>Retrofit</b>. The official Backend is actively under development, providing a scalable API from scratch, complete with endpoint security and a relational database.
+            <p class="section-subtitle lang-en">
+                Open to senior engineering roles, staff/specialist positions, and high-impact software consulting.
             </p>
-            
-            <div class="spring-badge">Spring Boot 3 + PostgreSQL + Room</div>
+
+            <div style="margin-top: 34px;">
+                <a href="mailto:marcoslinces@outlook.com" class="btn-primary" style="font-size: 1.05rem; padding: 16px 38px;">
+                    ✉️ marcoslinces@outlook.com
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================== -->
+    <!-- MODAL LIGHTBOX DE TELA CHEIA PARA IMAGENS      -->
+    <!-- ============================================== -->
+    <div id="image-lightbox" class="lightbox-overlay" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Visualização de imagem em tela cheia">
+        <div class="lightbox-topbar">
+            <button class="lightbox-close-btn" onclick="closeLightbox(event, true)">
+                <span>✕</span>
+                <span class="lang-pt">Fechar (ESC)</span>
+                <span class="lang-en">Close (ESC)</span>
+            </button>
         </div>
-
+        <div class="lightbox-content-wrapper">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Preview em Tela Cheia">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- ============================================== -->
+    <!-- FOOTER                                         -->
+    <!-- ============================================== -->
+    <footer>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px;">
+            <img src="assets/lincesdev-icon.png" alt="Linces Dev" style="width: 26px; height: 26px; object-fit: contain;" onerror="this.src='https://raw.githubusercontent.com/MarcosPALinces/ComposeStore-Kit-Preview/main/assets/images/icon_final.png'">
+            <strong style="color: #fff; font-size: 1.02rem;">Linces Dev • Software Studio</strong>
+        </div>
+        <p>© 2026 Marcos Linces. Todos os direitos reservados • Engenharia de Software de Alto Padrão.</p>
+        <p style="margin-top: 6px; font-size: 0.82rem;">
+            Construído com padrões modernos de web e hospedado no GitHub Pages.
+        </p>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- SCRIPTS DE INTERATIVIDADE                      -->
+    <!-- ============================================== -->
     <script>
-        function setLanguage(lang) {
+        // Alternância de Idioma (PT-BR / EN)
+        function setLanguage(lang, evt) {
             if (lang === 'en') {
                 document.body.classList.add('en');
+                localStorage.setItem('portfolio_lang', 'en');
             } else {
                 document.body.classList.remove('en');
+                localStorage.setItem('portfolio_lang', 'pt');
             }
 
             const btns = document.querySelectorAll('.lang-btn');
-            btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        function toggleProject(projectId) {
-            const container = document.getElementById('projects-wrapper');
-            const projectCard = document.getElementById(projectId);
-            const isExpanded = projectCard.classList.contains('expanded');
-            
-            if(isExpanded) {
-                projectCard.classList.remove('expanded');
-                container.classList.remove('is-expanded-mode');
-                updateButtonText(projectId, false);
-                
-                setTimeout(() => {
-                    projectCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
-            } else {
-                document.querySelectorAll('.project-section.expanded').forEach(card => {
-                    card.classList.remove('expanded');
-                    updateButtonText(card.id, false);
-                });
-
-                projectCard.classList.add('expanded');
-                container.classList.add('is-expanded-mode');
-                updateButtonText(projectId, true);
-                
-                setTimeout(() => {
-                    projectCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 150);
-            }
-        }
-
-        function updateButtonText(projectId, isExpanded) {
-            const textPt = document.getElementById(`btn-text-${projectId}-pt`);
-            const textEn = document.getElementById(`btn-text-${projectId}-en`);
-
-            if (isExpanded) {
-                textPt.innerText = "Fechar Projeto ▲";
-                textEn.innerText = "Close Project ▲";
-            } else {
-                if (projectId === 'proj-compose') {
-                    textPt.innerText = "Ver Arquitetura do Projeto ▼";
-                    textEn.innerText = "View Project Architecture ▼";
+            btns.forEach(btn => {
+                if (btn.innerText.trim().toLowerCase() === lang) {
+                    btn.classList.add('active');
                 } else {
-                    textPt.innerText = "Ver Projeto Completo ▼";
-                    textEn.innerText = "View Full Project ▼";
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Alternância de Abas no Ecossistema ComposeStore + Rolagem Automática com Ênfase
+        function switchProjectTab(tabId, evt) {
+            document.querySelectorAll('.p-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.p-tab-content').forEach(content => content.classList.remove('active'));
+
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            }
+
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+
+                // Aplica pulso luminoso de ênfase no banner do projeto selecionado
+                const banner = targetContent.querySelector('.product-brief-banner');
+                if (banner) {
+                    banner.classList.remove('pulse-emphasis');
+                    void banner.offsetWidth; // Reflow para reiniciar animação
+                    banner.classList.add('pulse-emphasis');
                 }
             }
+
+            // Rola suavemente exatamente para a divisão "Selecione um produto ou camada abaixo..."
+            const selectorAnchor = document.getElementById('selector-anchor');
+            if (selectorAnchor) {
+                selectorAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
+
+        // Funções do Lightbox de Imagens em Tela Cheia
+        function openLightbox(imgElement) {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgElement.currentSrc || imgElement.src;
+            lightboxImg.alt = imgElement.alt || 'Visualização em tela cheia';
+
+            // Busca o título do card conforme o idioma ativo ou usa o atributo alt
+            const parentCard = imgElement.closest('.phone-frame-card, .media-item-card, .comparison-col');
+            let captionText = imgElement.alt;
+            if (parentCard) {
+                const isEn = document.body.classList.contains('en');
+                const heading = parentCard.querySelector(isEn ? 'h4.lang-en' : 'h4.lang-pt') || parentCard.querySelector('.comparison-header');
+                if (heading && heading.innerText.trim()) {
+                    captionText = heading.innerText.trim();
+                }
+            }
+
+            lightboxCaption.textContent = captionText;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(evt, forceClose = false) {
+            if (forceClose || evt.target.id === 'image-lightbox' || evt.target.classList.contains('lightbox-content-wrapper')) {
+                const lightbox = document.getElementById('image-lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Inicialização ao carregar o DOM
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('portfolio_lang') || 'pt';
+            setLanguage(savedLang);
+
+            // Habilita clique em todas as imagens de projetos para abrir em tela cheia
+            const showcaseImages = document.querySelectorAll('.phone-frame-card img, .media-item-card img, .comparison-col img');
+            showcaseImages.forEach(img => {
+                img.addEventListener('click', () => openLightbox(img));
+            });
+
+            // Fecha o Lightbox ao pressionar a tecla ESC
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLightbox(null, true);
+                }
+            });
+        });
     </script>
 </body>
 </html>
