@@ -1,7 +1,7 @@
 <div align="center">
 
 # Olá, sou o Marcos Linces 👋
-### **Senior Android & Fullstack Systems Engineer • Linces Dev Studio**
+### **Android & Fullstack Systems Engineer • Linces Dev Studio**
 
 [![Portfólio Interativo](https://img.shields.io/badge/🚀_ACESSAR_MEU_PORTFÓLIO_INTERATIVO-10B981?style=for-the-badge&logo=googlechrome&logoColor=051B11)](https://marcospalinces.github.io/index.html)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcos-paulo-augsten-linces-4b6889153/)
@@ -18,7 +18,7 @@ Não veja apenas código estático — explore os ecossistemas em execução! Me
 
 👉 **[Clique aqui para explorar o Portfólio Completo (`marcospalinces.github.io`)](https://marcospalinces.github.io/index.html)**
 
-* **📱 ComposeStore Omnichannel Ecosystem:** App Android 100% Jetpack Compose + Room (Offline-First) sincronizado via Silent Push (FCM) com painel administrativo Web CMS (React 19 + Drag-and-Drop), API Spring Boot 3 (OMS) e AWS S3.
+* **📱 ComposeStore E-commerce Omnichannel:** App Android 100% Jetpack Compose + Room (Offline-First) sincronizado via Silent Push (FCM) com painel administrativo Web CMS (React 19 + Drag-and-Drop), API Spring Boot 3 (OMS) e AWS S3.
 * **🏢 DataMobile Enterprise (Antes vs. Depois):** Refatoração profunda de sistema legado (Java/XML) para Material Design 3, integrando biometria facial local com **ONNX Runtime (Edge AI)** operando 100% offline.
 
 ---
