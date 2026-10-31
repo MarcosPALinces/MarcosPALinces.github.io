@@ -23,7 +23,7 @@ Não veja apenas código estático — explore os ecossistemas em execução! Me
 
 ---
 
-### 🛠️ Arsenal Técnico & Stacks Dominadas
+### 🛠️ Conhecimento Técnico & Stacks Dominadas
 
 | Camada | Tecnologias & Práticas |
 | :--- | :--- |
